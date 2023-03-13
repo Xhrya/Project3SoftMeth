@@ -138,7 +138,7 @@
                                         </HBox>
                                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
                                             <children>
-                                                <Button mnemonicParsing="false" text="Add">
+                                                <Button mnemonicParsing="false" onAction="#onAddButtonClick" text="Add">
                                                     <HBox.margin>
                                                         <Insets />
                                                     </HBox.margin>

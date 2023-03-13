@@ -1,12 +1,16 @@
 package com.example.project3softmeth;
 
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 
 public class TuitionManagerController {
     @FXML
     private Label welcomeText;
+
+    @FXML
+    ToggleGroup residentButtons;
 
     @FXML
     protected void onHelloButtonClick() {
@@ -14,8 +18,11 @@ public class TuitionManagerController {
     }
 
     @FXML
-    protected void onAddButtonClick() {
-        welcomeText.setText("Welcome to JavaFX Application!");
+    protected void onAddButtonClick(Event e) {
+
+//        welcomeText.setText(residentButtons.toString());
+
+        System.out.println("HELLLLLLOOOOOOO");
     }
 }
 

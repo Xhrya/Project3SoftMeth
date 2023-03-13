@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="356.0" prefWidth="419.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project3softmeth.TuitionManagerController">
+    <left>
+        <TabPane prefHeight="200.0" prefWidth="423.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+            <tabs>
+                <Tab text="Roster">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="169.0" prefWidth="600.0">
+                            <children>
+                                <GridPane layoutY="22.0" prefHeight="128.0" prefWidth="417.0">
+                                    <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="199.0" minWidth="10.0" prefWidth="75.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="152.0" minWidth="1.0" prefWidth="125.0" />
+                                    </columnConstraints>
+                                    <rowConstraints>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    </rowConstraints>
+                                    <children>
+                                        <Label text="firstName" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                            <font>
+                                                <Font size="10.0" />
+                                            </font>
+                                        </Label>
+                                        <Label text="lastName" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                                            <font>
+                                                <Font size="10.0" />
+                                            </font>
+                                        </Label>
+                                        <Label text="Date of Birth" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+                                            <font>
+                                                <Font size="10.0" />
+                                            </font>
+                                        </Label>
+                                        <TextField GridPane.columnIndex="1" />
+                                        <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                        <DatePicker prefHeight="26.0" prefWidth="304.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                        <Label text="Label" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+                                        <Label text="Status" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+                                        <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                            <children>
+                                                <VBox prefHeight="35.0" prefWidth="232.0">
+                                                    <children>
+                                                        <RadioButton mnemonicParsing="false" prefHeight="18.0" prefWidth="190.0" text="Resident" />
+                                                        <RadioButton mnemonicParsing="false" prefHeight="18.0" prefWidth="300.0" text="NonResident" />
+                                                        <VBox prefHeight="200.0" prefWidth="100.0" />
+                                                    </children>
+                                                </VBox>
+                                            </children>
+                                        </HBox>
+                                    </children>
+                                </GridPane>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab text="Enroll/Drop">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                    </content>
+                </Tab>
+                <Tab text="Scholarship">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+    </left>
+    <bottom>
+        <TextArea prefHeight="156.0" prefWidth="0.0" BorderPane.alignment="CENTER" />
+    </bottom>
+</BorderPane>

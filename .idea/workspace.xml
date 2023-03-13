@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="25c80360-d87a-49ab-86f1-bcaad0488000" name="Changes" comment="push again everything fixed">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/project3softmeth/TuitionManagerMain.java" afterDir="false" />
+    <list default="true" id="25c80360-d87a-49ab-86f1-bcaad0488000" name="Changes" comment="everything except scholarship">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/project3softmeth/tuition_manager_view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/project3softmeth/tuition_manager_view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,7 +115,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678731261947</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="everything except scholarship">
+      <created>1678744547290</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1678744547290</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -136,7 +141,8 @@
     <MESSAGE value="committing files added" />
     <MESSAGE value="commit everything with errors in enrollment and enrollStudent" />
     <MESSAGE value="push again everything fixed" />
-    <option name="LAST_COMMIT_MESSAGE" value="push again everything fixed" />
+    <MESSAGE value="everything except scholarship" />
+    <option name="LAST_COMMIT_MESSAGE" value="everything except scholarship" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -12,7 +12,12 @@ public class TuitionManagerController {
     protected void onHelloButtonClick() {
         welcomeText.setText("Welcome to JavaFX Application!");
     }
+
+    @FXML
+    protected void onAddButtonClick() {
+        welcomeText.setText("Welcome to JavaFX Application!");
     }
+}
 
 
 

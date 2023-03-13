@@ -15,7 +15,6 @@ public class Enrollment {
         this.enrollStudents = enrollStudents;
         this.size = size;
     }
-
     /**
      * Overloaded constructor for the Enrollment class
      *
@@ -95,6 +94,7 @@ public class Enrollment {
         }
         size--;
         int a;
+    }
 
         /**
          * Check if a student is part of the current EnrollStudent array
@@ -207,8 +207,8 @@ public class Enrollment {
             //EnrollStudent tempEnrolled =  enrollStudents[index];
             enrollStudents[index].setCredits(updatedCredits);
         }
-    }
 }
+
 
 
 

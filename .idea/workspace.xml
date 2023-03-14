@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="25c80360-d87a-49ab-86f1-bcaad0488000" name="Changes" comment="addbutton">
+    <list default="true" id="25c80360-d87a-49ab-86f1-bcaad0488000" name="Changes" comment="trying to set up buttons">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project3softmeth/TuitionManagerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project3softmeth/TuitionManagerController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project3softmeth/TuitionManagerMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project3softmeth/TuitionManagerMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/project3softmeth/tuition_manager_view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/project3softmeth/tuition_manager_view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,7 +140,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678746698569</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="trying to set up buttons">
+      <created>1678751090876</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1678751090876</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -161,7 +169,8 @@
     <MESSAGE value="everything except scholarship" />
     <MESSAGE value="Fixing Scholarship tab" />
     <MESSAGE value="addbutton" />
-    <option name="LAST_COMMIT_MESSAGE" value="addbutton" />
+    <MESSAGE value="trying to set up buttons" />
+    <option name="LAST_COMMIT_MESSAGE" value="trying to set up buttons" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

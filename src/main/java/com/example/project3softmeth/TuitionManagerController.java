@@ -8,10 +8,8 @@ import javafx.scene.control.*;
 public class TuitionManagerController {
     @FXML
     private Label welcomeText;
-
     @FXML
     ToggleGroup residentButtons;
-
     @FXML
     protected void onHelloButtonClick() {
         welcomeText.setText("Welcome to JavaFX Application!");
@@ -19,10 +17,7 @@ public class TuitionManagerController {
 
     @FXML
     protected void onAddButtonClick(Event e) {
-
-//        welcomeText.setText(residentButtons.toString());
-
-        System.out.println("HELLLLLLOOOOOOO");
+        System.out.println(residentButtons.getSelectedToggle().toString());
     }
 }
 

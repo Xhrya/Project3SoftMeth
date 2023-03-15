@@ -4,7 +4,11 @@ import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.layout.VBox;
+import javafx.stage.FileChooser;
+import javafx.stage.Window;
 
+import java.io.File;
 import java.util.Arrays;
 
 public class TuitionManagerController {
@@ -28,6 +32,8 @@ public class TuitionManagerController {
 
     @FXML
     DatePicker birthDateEnroll;
+
+
 
     //everything for Enroll/Drop
 
@@ -72,6 +78,30 @@ public class TuitionManagerController {
 
     }
 
+//    @FXML
+//    VBox vbMenu;
+
+//    @FXML
+//    protected void onLoadFromFileClick(Event e)
+//    {
+//        Window stage = vbMenu.getScene().getWindow();
+//        FileChooser fileChooser = new FileChooser();
+//        fileChooser.setInitialDirectory(new File("C:\\temp"));
+//        fileChooser.setTitle("Load Dialog");
+//        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("text file", "*.txt"), new FileChooser.ExtensionFilter("pdf", "*.pdf"));
+//
+//        try{
+//            File file = fileChooser.showSaveDialog(stage);
+//            fileChooser.setInitialDirectory(file.getParentFile());
+//
+//        }
+//        catch(Exception ex)
+//        {
+//
+//        }
+//    }
+
+    @FXML
     protected void OnDropButtonClick(Event e)
     {//attach to scene builder
 

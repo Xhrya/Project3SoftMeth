@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="25c80360-d87a-49ab-86f1-bcaad0488000" name="Changes" comment="adding major + region buttons">
+    <list default="true" id="25c80360-d87a-49ab-86f1-bcaad0488000" name="Changes" comment="worked on Add button">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project3softmeth/TuitionManagerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project3softmeth/TuitionManagerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project3softmeth/TuitionManagerMain.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/project3softmeth/tuition_manager_view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/project3softmeth/tuition_manager_view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -168,7 +167,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678839476838</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="worked on Add button">
+      <created>1678842103686</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1678842103686</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -194,7 +200,8 @@
     <MESSAGE value="toggle button works!" />
     <MESSAGE value="pushing the button updates" />
     <MESSAGE value="adding major + region buttons" />
-    <option name="LAST_COMMIT_MESSAGE" value="adding major + region buttons" />
+    <MESSAGE value="worked on Add button" />
+    <option name="LAST_COMMIT_MESSAGE" value="worked on Add button" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

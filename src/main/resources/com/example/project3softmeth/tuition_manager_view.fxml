@@ -156,7 +156,7 @@
                                                         <Insets left="10.0" right="10.0" />
                                                     </HBox.margin>
                                                 </Button>
-                                                <Button mnemonicParsing="false" text="Load from File">
+                                                <Button mnemonicParsing="false"  text="Load from File">
                                                     <HBox.margin>
                                                         <Insets left="10.0" right="10.0" />
                                                     </HBox.margin>
@@ -322,6 +322,6 @@
         </TabPane>
     </left>
     <bottom>
-        <TextArea prefHeight="126.0" prefWidth="578.0" BorderPane.alignment="CENTER" />
+        <TextArea fx:id="vbMenu" prefHeight="126.0" prefWidth="578.0" BorderPane.alignment="CENTER" />
     </bottom>
 </BorderPane>

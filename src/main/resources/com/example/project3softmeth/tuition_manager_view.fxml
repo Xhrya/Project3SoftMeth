@@ -23,14 +23,17 @@
 <?import javafx.scene.text.Font?>
 
 <BorderPane prefHeight="522.0" prefWidth="546.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.project3softmeth.TuitionManagerController">
-    <left>
-        <TabPane prefHeight="299.0" prefWidth="578.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+    <bottom>
+        <TextArea fx:id="vbMenu" prefHeight="136.0" prefWidth="546.0" BorderPane.alignment="CENTER" />
+    </bottom>
+   <top>
+        <TabPane prefHeight="384.0" prefWidth="546.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
             <tabs>
                 <Tab text="Roster">
                     <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="367.0" prefWidth="547.0">
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="321.0" prefWidth="546.0">
                             <children>
-                                <GridPane alignment="TOP_CENTER" layoutY="19.0" prefHeight="328.0" prefWidth="578.0">
+                                <GridPane alignment="TOP_CENTER" layoutY="19.0" prefHeight="327.0" prefWidth="578.0">
                                     <columnConstraints>
                                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="344.79999084472655" minWidth="10.0" prefWidth="161.99998779296874" />
                                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="429.1999877929687" minWidth="1.0" prefWidth="416.4000122070313" />
@@ -218,7 +221,7 @@
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <GridPane layoutX="15.0" layoutY="19.0" prefHeight="183.0" prefWidth="535.0">
+                        <GridPane layoutX="15.0" layoutY="19.0" prefHeight="183.0" prefWidth="524.0">
                           <columnConstraints>
                             <ColumnConstraints hgrow="SOMETIMES" maxWidth="263.199951171875" minWidth="10.0" prefWidth="175.59999084472656" />
                             <ColumnConstraints hgrow="SOMETIMES" maxWidth="360.40000915527344" minWidth="10.0" prefWidth="360.40000915527344" />
@@ -237,7 +240,7 @@
                               <Label text="Credits" GridPane.rowIndex="3" />
                               <TextField fx:id="firstNameEnroll" GridPane.columnIndex="1" />
                               <TextField fx:id="lastNameEnroll" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                              <DatePicker fx:id="birthDateEnroll" prefHeight="26.0" prefWidth="262.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <DatePicker fx:id="birthDateEnroll" prefHeight="26.0" prefWidth="353.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                               <TextField fx:id="creditsEnroll" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                               <HBox prefHeight="18.0" prefWidth="267.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
                                  <children>
@@ -281,7 +284,7 @@
                                         <Label text="Amount" GridPane.rowIndex="3" />
                                         <TextField fx:id="firstNameScholarship" GridPane.columnIndex="1" />
                                         <TextField fx:id="lastNameScholarship" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                        <DatePicker fx:id="birthDateScholarship" prefHeight="26.0" prefWidth="262.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                        <DatePicker fx:id="birthDateScholarship" prefHeight="26.0" prefWidth="327.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                         <HBox prefHeight="18.0" prefWidth="267.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
                                             <children>
                                                 <Button mnemonicParsing="false" onAction="#onUpdateScholarshipAmountClick" prefHeight="26.0" prefWidth="177.0" text="Update Scholarship Amount">
@@ -299,30 +302,30 @@
                 </Tab>
             <Tab text="Print">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="323.0" prefWidth="546.0">
                      <children>
                         <MenuBar prefHeight="28.0" prefWidth="578.0">
                           <menus>
                             <Menu mnemonicParsing="false" text="Roster">
                               <items>
                                 <MenuItem mnemonicParsing="false" onAction="#onPrintByProfileRoster" text="Print by Profile" />
-                                    <MenuItem mnemonicParsing="false" text="Print by School" />
-                                    <MenuItem mnemonicParsing="false" text="Print by Standing" />
+                                    <MenuItem mnemonicParsing="false" onAction="#onPrintBySchoolRoster" text="Print by School" />
+                                    <MenuItem mnemonicParsing="false" onAction="#onPrintByStandingRoster" text="Print by Standing" />
                               </items>
                             </Menu>
                             <Menu mnemonicParsing="false" text="School/College">
                               <items>
-                                <MenuItem mnemonicParsing="false" text="RBS" />
-                                    <MenuItem mnemonicParsing="false" text="SAS" />
-                                    <MenuItem mnemonicParsing="false" text="SOE" />
-                                    <MenuItem mnemonicParsing="false" text="SC &amp; I" />
+                                <MenuItem mnemonicParsing="false" onAction="#onPrintBySchoolRBS" text="RBS" />
+                                    <MenuItem mnemonicParsing="false" onAction="#onPrintBySchoolSAS" text="SAS" />
+                                    <MenuItem mnemonicParsing="false" onAction="#onPrintBySchoolSOE" text="SOE" />
+                                    <MenuItem mnemonicParsing="false" onAction="#onPrintBySchoolSCI" text="SC &amp; I" />
                               </items>
                             </Menu>
                             <Menu mnemonicParsing="false" text="Enrollment">
                               <items>
-                                <MenuItem mnemonicParsing="false" text="Print Enrolled Students" />
-                                    <MenuItem mnemonicParsing="false" text="Print Tuition Due" />
-                                    <MenuItem mnemonicParsing="false" text="Semester End" />
+                                <MenuItem mnemonicParsing="false" onAction="#onPrintEnrolled" text="Print Enrolled Students" />
+                                    <MenuItem mnemonicParsing="false" onAction="#OnPrintTuitionDue" text="Print Tuition Due" />
+                                    <MenuItem mnemonicParsing="false" onAction="#onPrintSemesterEnd" text="Semester End" />
                               </items>
                             </Menu>
                           </menus>
@@ -333,8 +336,5 @@
             </Tab>
             </tabs>
         </TabPane>
-    </left>
-    <bottom>
-        <TextArea fx:id="vbMenu" prefHeight="126.0" prefWidth="578.0" BorderPane.alignment="CENTER" />
-    </bottom>
+   </top>
 </BorderPane>

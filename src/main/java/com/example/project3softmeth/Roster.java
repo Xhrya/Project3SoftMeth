@@ -24,6 +24,11 @@ public class Roster {
         this.size = s;
     }
 
+
+    public Student[] getRoster() {
+        return roster;
+    }
+
     /**
      * Finds the index of a student we are looking for
      *

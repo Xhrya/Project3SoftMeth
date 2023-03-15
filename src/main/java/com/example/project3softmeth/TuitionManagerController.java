@@ -11,6 +11,10 @@ public class TuitionManagerController {
     @FXML
     ToggleGroup residentButtons;
     @FXML
+    ToggleGroup regionButtons;
+    @FXML
+    ToggleGroup majorButtons;
+    @FXML
     protected void onHelloButtonClick() {
         welcomeText.setText("Welcome to JavaFX Application!");
     }
@@ -18,6 +22,7 @@ public class TuitionManagerController {
     @FXML
     protected void onAddButtonClick(Event e) {
         System.out.println(residentButtons.getSelectedToggle().toString());
+        System.out.println(majorButtons.getSelectedToggle().toString());
     }
 }
 

@@ -61,8 +61,8 @@
                                             </font>
                                         </Label>
                                         <TextField fx:id="firstNameRoster" GridPane.columnIndex="1" />
-                                        <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                        <DatePicker prefHeight="26.0" prefWidth="304.0" promptText="MM/DD/YYYY" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                        <TextField fx:id="lastNameRoster" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                        <DatePicker fx:id="birthDate" prefHeight="26.0" prefWidth="304.0" promptText="MM/DD/YYYY" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                         <Label text="Major" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                                             <font>
                                                 <Font size="14.0" />

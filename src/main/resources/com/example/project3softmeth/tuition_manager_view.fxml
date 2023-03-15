@@ -103,15 +103,12 @@
                                                 </VBox>
                                                 <VBox prefHeight="200.0" prefWidth="100.0">
                                                     <children>
-                                                        <RadioButton mnemonicParsing="false" text="Tristate">
+                                                        <RadioButton mnemonicParsing="false" text="Tristate" toggleGroup="$residentButtons">
                                                             <padding>
                                                                 <Insets top="5.0" />
                                                             </padding>
-                                             <toggleGroup>
-                                                <ToggleGroup fx:id="regionButtons" />
-                                             </toggleGroup>
                                                         </RadioButton>
-                                                        <RadioButton mnemonicParsing="false" text="International" toggleGroup="$regionButtons">
+                                                        <RadioButton mnemonicParsing="false" text="International" toggleGroup="$residentButtons">
                                                             <padding>
                                                                 <Insets top="15.0" />
                                                             </padding>
@@ -122,10 +119,13 @@
                                                     <children>
                                                         <HBox prefHeight="38.0" prefWidth="98.0">
                                                             <children>
-                                                                <RadioButton mnemonicParsing="false" text="NY" toggleGroup="$regionButtons">
+                                                                <RadioButton mnemonicParsing="false" text="NY">
                                                                     <padding>
                                                                         <Insets right="10.0" top="5.0" />
                                                                     </padding>
+                                                   <toggleGroup>
+                                                      <ToggleGroup fx:id="regionButtons" />
+                                                   </toggleGroup>
                                                                 </RadioButton>
                                                                 <RadioButton mnemonicParsing="false" text="CT" toggleGroup="$regionButtons">
                                                                     <padding>

@@ -235,18 +235,18 @@
                               <Label text="Last Name" GridPane.rowIndex="1" />
                               <Label text="Date of Birth" GridPane.rowIndex="2" />
                               <Label text="Credits" GridPane.rowIndex="3" />
-                              <TextField GridPane.columnIndex="1" />
-                              <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                              <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                              <DatePicker prefHeight="26.0" prefWidth="262.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <TextField fx:id="firstNameEnroll" GridPane.columnIndex="1" />
+                              <TextField fx:id="lastNameEnroll" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <DatePicker fx:id="birthDateEnroll" prefHeight="26.0" prefWidth="262.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <TextField fx:id="creditsEnroll" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                               <HBox prefHeight="18.0" prefWidth="267.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
                                  <children>
-                                    <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="63.0" text="Drop">
+                                    <Button mnemonicParsing="false" onAction="#onDropClick" prefHeight="26.0" prefWidth="63.0" text="Drop">
                                        <HBox.margin>
                                           <Insets bottom="10.0" left="10.0" right="10.0" top="30.0" />
                                        </HBox.margin>
                                     </Button>
-                                    <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="77.0" text="Enroll">
+                                    <Button mnemonicParsing="false" onAction="#onEnrollClick" prefHeight="26.0" prefWidth="77.0" text="Enroll">
                                        <HBox.margin>
                                           <Insets bottom="10.0" left="10.0" right="10.0" top="30.0" />
                                        </HBox.margin>
@@ -279,19 +279,19 @@
                                         <Label text="Last Name" GridPane.rowIndex="1" />
                                         <Label text="Date of Birth" GridPane.rowIndex="2" />
                                         <Label text="Amount" GridPane.rowIndex="3" />
-                                        <TextField GridPane.columnIndex="1" />
-                                        <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                        <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                                        <DatePicker prefHeight="26.0" prefWidth="262.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                        <TextField fx:id="firstNameScholarship" GridPane.columnIndex="1" />
+                                        <TextField fx:id="lastNameScholarship" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                        <DatePicker fx:id="birthDateScholarship" prefHeight="26.0" prefWidth="262.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                         <HBox prefHeight="18.0" prefWidth="267.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
                                             <children>
-                                                <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="177.0" text="Update Scholarship Amount">
+                                                <Button mnemonicParsing="false" onAction="#onUpdateScholarshipAmountClick" prefHeight="26.0" prefWidth="177.0" text="Update Scholarship Amount">
                                                     <HBox.margin>
                                                         <Insets bottom="10.0" left="10.0" right="10.0" top="30.0" />
                                                     </HBox.margin>
                                                 </Button>
                                             </children>
                                         </HBox>
+                              <TextField fx:id="amountScholarship" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                                     </children>
                                 </GridPane>
                             </children></AnchorPane>
@@ -305,7 +305,7 @@
                           <menus>
                             <Menu mnemonicParsing="false" text="Roster">
                               <items>
-                                <MenuItem mnemonicParsing="false" text="Print by Profile" />
+                                <MenuItem mnemonicParsing="false" onAction="#onPrintByProfileRoster" text="Print by Profile" />
                                     <MenuItem mnemonicParsing="false" text="Print by School" />
                                     <MenuItem mnemonicParsing="false" text="Print by Standing" />
                               </items>

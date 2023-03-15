@@ -5,6 +5,8 @@ import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.stage.FileChooser;
 import javafx.stage.Window;
 
@@ -19,8 +21,14 @@ public class TuitionManagerController {
 //        welcomeText.setText("Welcome to JavaFX Application!");
 //    }
 
+
+
     Roster newRoster = new Roster();
     Enrollment enrollmentList = new Enrollment();
+
+    @FXML
+    TextArea vbMenu;
+
     @FXML
     ToggleGroup residentButtons;
     @FXML
@@ -38,7 +46,23 @@ public class TuitionManagerController {
     @FXML
     RadioButton isAbroad;
     @FXML
+    TextField firstNameEnroll;
+    @FXML
+    TextField lastNameEnroll;
+    @FXML
+    TextField creditsEnroll;
+    @FXML
     DatePicker birthDateEnroll;
+
+    @FXML
+    TextField firstNameScholarship;
+    @FXML
+    TextField lastNameScholarship;
+    @FXML
+    DatePicker birthDateScholarship;
+    @FXML
+    TextField amountScholarship;
+
 
 
     //everything for Enroll/Drop
@@ -55,12 +79,12 @@ public class TuitionManagerController {
         //delete this later!
         System.out.println(residentButtons.getSelectedToggle().toString());
         System.out.println("STATUS:"+residency);
-        System.out.println(majorButtons.getSelectedToggle().toString());
+        System.out.println("Major: " + majorButtons.getSelectedToggle().toString());
         System.out.println("MAJOR:" + major);
-        System.out.println(firstNameRoster.getText());
-        System.out.println(lastNameRoster.getText());
-        System.out.println(creditsCompletedRoster.getText());
-        System.out.println(birthDate.getValue());
+        System.out.println("FirstName:" + firstNameRoster.getText());
+        System.out.println("Lastname :" + lastNameRoster.getText());
+        System.out.println("Credits completed:"+ creditsCompletedRoster.getText());
+        System.out.println("Birthdate :" + birthDate.getValue());
 //        String dob = birthDate.getValue().toString().substring(5 , 7) + "/" + birthDate.getValue().toString().substring(8 , 10) + "/" + birthDate.getValue().toString().substring(0 , 4);
 //        System.out.println(dob);
         //delete this later^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -68,7 +92,6 @@ public class TuitionManagerController {
 
         if(residency.equals("Resident")) {
             //NEED AN EXCEPTION TO MAKE SURE ALL VALUES ARE ENTERED AND NONE OF THE FIELDS ARE MISSING
-            System.out.println("entered resident statement");
             String firstName = firstNameRoster.getText();
             String lastName = lastNameRoster.getText();
             String dob = birthDate.getValue().toString().substring(5 , 7) + "/" + birthDate.getValue().toString().substring(8 , 10) + "/" + birthDate.getValue().toString().substring(0 , 4);
@@ -323,5 +346,114 @@ public class TuitionManagerController {
 //        }
 //    }
 
+    @FXML
+    protected void onEnrollClick(Event e)
+    {
+        String firstName = firstNameEnroll.getText();
+        String lastName = lastNameEnroll.getText();
+        String d = birthDateEnroll.getValue().toString().substring(5 , 7) + "/" + birthDateEnroll.getValue().toString().substring(8 , 10) + "/" + birthDateEnroll.getValue().toString().substring(0 , 4);
 
-}
+        Date dob = new Date(d);
+        int credits = 0;
+        try{
+            credits = Integer.parseInt(creditsEnroll.getText());
+        }
+        catch(NumberFormatException g)
+        {
+            System.out.println("Credits completed invalid: not an integer!");
+            return;
+        }
+
+        boolean isValid = dob.isValid();
+        Profile enrollProfile = new Profile(lastName, firstName, dob);
+
+        //making enrollStudent and adding/updating credits:
+
+        EnrollStudent newEnroll = new EnrollStudent(enrollProfile, credits);
+        if(enrollmentList.contains(newEnroll))
+        {
+            enrollmentList.updateCredits(newEnroll, credits);
+        }
+        else
+        {
+            enrollmentList.add(newEnroll);
+            System.out.println(enrollProfile.toString() + "enrolled " + credits + " credits");
+        }
+    }
+
+
+    @FXML
+    protected void onDropClick(Event e)
+    {
+        String firstName = firstNameEnroll.getText();
+        String lastName = lastNameEnroll.getText();
+        String d = birthDateEnroll.getValue().toString().substring(5 , 7) + "/" + birthDateEnroll.getValue().toString().substring(8 , 10) + "/" + birthDateEnroll.getValue().toString().substring(0 , 4);
+        Date dob = new Date(d);
+
+        int credits = 0;
+        try{
+            credits = Integer.parseInt(creditsEnroll.getText());
+        }
+        catch(NumberFormatException n)
+        {
+            System.out.println("Credits completed invalid: not an integer!");
+            return;
+        }
+
+        boolean isValid = dob.isValid();
+        Profile enrollProfile = new Profile(lastName, firstName, dob);
+
+        //making enrollStudent and adding/updating credits:
+
+        EnrollStudent newEnroll = new EnrollStudent(enrollProfile, credits);
+        if(enrollmentList.contains(newEnroll))
+        {
+            enrollmentList.remove(newEnroll);
+            System.out.println(enrollProfile.toString() + " dropped.");
+        }
+        else
+        {
+            System.out.println(enrollProfile.toString() + "is not enrolled ");
+        }
+
+    }
+    @FXML
+    protected void onUpdateScholarshipAmountClick(Event e)
+    {
+        String firstName = firstNameScholarship.getText();
+        String lastName = lastNameScholarship.getText();
+        String d = birthDateScholarship.getValue().toString().substring(5 , 7) + "/" + birthDateScholarship.getValue().toString().substring(8 , 10) + "/" + birthDateScholarship.getValue().toString().substring(0 , 4);
+        Date dob = new Date(d);
+        int amount = 0;
+        try{
+            amount = Integer.parseInt(amountScholarship.getText());
+        }
+        catch(NumberFormatException f)
+        {
+            System.out.println("Amount awarded invalid: not an integer!");
+            return;
+        }
+
+        Profile findRes = new Profile(lastName, firstName, dob); //create a new Profile for the student
+        Resident r = newRoster.findResident(findRes); //only residents have scholarship?
+
+        if(r!= null)
+        {
+            r.setScholarship(amount);
+            System.out.println("The scholarship amount has been set to $" + r.getScholarship());
+        }
+        else {
+            System.out.println("Resident not found");
+        }
+    }
+    @FXML
+    protected void onPrintByProfileRoster()
+    {
+        vbMenu.setText("testing Roster print");
+    }
+
+
+
+
+    }
+

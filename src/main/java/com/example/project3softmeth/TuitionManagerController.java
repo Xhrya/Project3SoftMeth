@@ -98,22 +98,30 @@ public class TuitionManagerController {
      */
     protected void onAddButtonClick(Event e) {
        //converting the toggle buttons of resident and major into strings
+        if(residentButtons.getSelectedToggle() == null){
+            vbMenu.appendText("Please specify your residency." + "\n"+ "\n");
+            return;
+        }
         String residency = residentButtons.getSelectedToggle().toString();
         residency = residency.substring(residency.indexOf("'") +1, residency.length() -1);
 
+        if(majorButtons.getSelectedToggle() == null){
+            vbMenu.appendText("Please specify your major." + "\n"+ "\n");
+            return;
+        }
         String major = majorButtons.getSelectedToggle().toString();
         major = major.substring(major.indexOf("'") +1, major.length() -1);
 
 
         //delete this later!
         //vbMenu.appendText(residentButtons.getSelectedToggle().toString());
-        vbMenu.appendText("STATUS:"+residency + "\n");
-        //vbMenu.appendText("Major: " + majorButtons.getSelectedToggle().toString());
-        vbMenu.appendText("MAJOR:" + major+ "\n");
-        vbMenu.appendText("FirstName:" + firstNameRoster.getText()+ "\n");
-        vbMenu.appendText("Lastname :" + lastNameRoster.getText()+ "\n");
-        vbMenu.appendText("Credits completed:"+ creditsCompletedRoster.getText() + "\n");
-        vbMenu.appendText("Birthdate :" + birthDate.getValue() + "\n");
+//        vbMenu.appendText("STATUS:"+residency + "\n");
+//        //vbMenu.appendText("Major: " + majorButtons.getSelectedToggle().toString());
+//        vbMenu.appendText("MAJOR:" + major+ "\n");
+//        vbMenu.appendText("FirstName:" + firstNameRoster.getText()+ "\n");
+//        vbMenu.appendText("Lastname :" + lastNameRoster.getText()+ "\n");
+//        vbMenu.appendText("Credits completed:"+ creditsCompletedRoster.getText() + "\n");
+//        vbMenu.appendText("Birthdate :" + birthDate.getValue() + "\n");
 //        String dob = birthDate.getValue().toString().substring(5 , 7) + "/" + birthDate.getValue().toString().substring(8 , 10) + "/" + birthDate.getValue().toString().substring(0 , 4);
 //        vbMenu.appendText(dob);
         //delete this later^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -122,9 +130,22 @@ public class TuitionManagerController {
         if(residency.equals("Resident")) {
             //NEED AN EXCEPTION TO MAKE SURE ALL VALUES ARE ENTERED AND NONE OF THE FIELDS ARE MISSING
             String firstName = firstNameRoster.getText();
-
+            if(firstName.length()<1){
+                vbMenu.appendText("Please enter a first name." + "\n"+ "\n");
+                return;
+            }
             String lastName = lastNameRoster.getText();
+            if(lastName.length()<1){
+                vbMenu.appendText("Please enter a last name." + "\n"+ "\n");
+                return;
+            }
+
+            if(birthDate.getValue() == null){
+                vbMenu.appendText("Please specify a date of birth" + "\n"+ "\n");
+                return;
+            }
             String dob = birthDate.getValue().toString().substring(5 , 7) + "/" + birthDate.getValue().toString().substring(8 , 10) + "/" + birthDate.getValue().toString().substring(0 , 4);
+
             int credits = 0;
             try{
                 credits = Integer.parseInt((creditsCompletedRoster.getText()));
@@ -164,10 +185,22 @@ public class TuitionManagerController {
                 vbMenu.appendText("DOB invalid: " + dob.toString() + " is younger than 16 years old."+ "\n");
             }
         }else if(residency.equals("NonResident")) {
-            vbMenu.appendText("Nonresident entered"+ "\n");
+//            vbMenu.appendText("Nonresident entered"+ "\n");
             //NEED AN EXCEPTION TO MAKE SURE ALL VALUES ARE ENTERED AND NONE OF THE FIELDS ARE MISSING
             String firstName = firstNameRoster.getText();
+            if(firstName.length()<1){
+                vbMenu.appendText("Please enter a first name." + "\n"+ "\n");
+                return;
+            }
             String lastName = lastNameRoster.getText();
+            if(lastName.length()<1){
+                vbMenu.appendText("Please enter a last name." + "\n"+ "\n");
+                return;
+            }
+            if(birthDate.getValue() == null){
+                vbMenu.appendText("Please specify a date of birth" + "\n"+ "\n");
+                return;
+            }
             String dob = birthDate.getValue().toString().substring(5 , 7) + "/" + birthDate.getValue().toString().substring(8 , 10) + "/" + birthDate.getValue().toString().substring(0 , 4);
             int credits = 0;
             try{
@@ -209,10 +242,27 @@ public class TuitionManagerController {
             }
 
         } else if(residency.equals("Tristate")) {
-            vbMenu.appendText("triSTATE entered"+ "\n");
+//            vbMenu.appendText("triSTATE entered"+ "\n");
             String firstName = firstNameRoster.getText();
+            if(firstName.length()<1){
+                vbMenu.appendText("Please enter a first name." + "\n"+ "\n");
+                return;
+            }
             String lastName = lastNameRoster.getText();
+            if(lastName.length()<1){
+                vbMenu.appendText("Please enter a last name." + "\n"+ "\n");
+                return;
+            }
+            if(birthDate.getValue() == null){
+                vbMenu.appendText("Please specify a date of birth" + "\n"+ "\n");
+                return;
+            }
             String dob = birthDate.getValue().toString().substring(5 , 7) + "/" + birthDate.getValue().toString().substring(8 , 10) + "/" + birthDate.getValue().toString().substring(0 , 4);
+
+            if(regionButtons.getSelectedToggle() == null){
+                vbMenu.appendText("Please specify your state." + "\n"+ "\n");
+                return;
+            }
             String state = (regionButtons.getSelectedToggle().toString());
             state = state.substring(state.indexOf("'") +1, state.length() -1);
             vbMenu.appendText("STATE:" + state);
@@ -258,9 +308,21 @@ public class TuitionManagerController {
                 vbMenu.appendText("DOB invalid: " + dob.toString() + " is younger than 16 years old."+ "\n");
             }
         } else if(residency.equals("International")) {
-            vbMenu.appendText("international entered"+ "\n");
+//            vbMenu.appendText("international entered"+ "\n");
             String firstName = firstNameRoster.getText();
+            if(firstName.length()<1){
+                vbMenu.appendText("Please enter a first name." + "\n"+ "\n");
+                return;
+            }
             String lastName = lastNameRoster.getText();
+            if(lastName.length()<1){
+                vbMenu.appendText("Please enter a last name." + "\n"+ "\n");
+                return;
+            }
+            if(birthDate.getValue() == null){
+                vbMenu.appendText("Please specify a date of birth" + "\n"+ "\n");
+                return;
+            }
             String dob = birthDate.getValue().toString().substring(5 , 7) + "/" + birthDate.getValue().toString().substring(8 , 10) + "/" + birthDate.getValue().toString().substring(0 , 4);
             boolean abroad = isAbroad.isSelected();
 
@@ -315,7 +377,19 @@ public class TuitionManagerController {
      */
     protected void onDropButtonClick(Event e) {
         String firstName = firstNameRoster.getText();
+        if(firstName.length()<1){
+            vbMenu.appendText("Please enter a first name." + "\n"+ "\n");
+            return;
+        }
         String lastName = lastNameRoster.getText();
+        if(lastName.length()<1){
+            vbMenu.appendText("Please enter a last name." + "\n"+ "\n");
+            return;
+        }
+        if(birthDate.getValue() == null){
+            vbMenu.appendText("Please specify a date of birth" + "\n"+ "\n");
+            return;
+        }
         String dob = birthDate.getValue().toString().substring(5 , 7) + "/" + birthDate.getValue().toString().substring(8 , 10) + "/" + birthDate.getValue().toString().substring(0 , 4);
 
         //making the Date, Profile, and Student
@@ -340,7 +414,20 @@ public class TuitionManagerController {
         major = major.substring(major.indexOf("'") +1, major.length() -1);
 
         String firstName = firstNameRoster.getText();
+        if(firstName.length()<1){
+            vbMenu.appendText("Please enter a first name." + "\n"+ "\n");
+            return;
+        }
+
         String lastName = lastNameRoster.getText();
+        if(lastName.length()<1){
+            vbMenu.appendText("Please enter a last name." + "\n"+ "\n");
+            return;
+        }
+        if(birthDate.getValue() == null){
+            vbMenu.appendText("Please specify a date of birth" + "\n"+ "\n");
+            return;
+        }
         String dob = birthDate.getValue().toString().substring(5 , 7) + "/" + birthDate.getValue().toString().substring(8 , 10) + "/" + birthDate.getValue().toString().substring(0 , 4);
 
         //making the Date & Profile
@@ -359,7 +446,7 @@ public class TuitionManagerController {
 
     @FXML
     /**
-     * Adds, drops, or changes the major of students given a file
+     * Adds, students given a file
      * @param e is the event where the user clicks "Change Major"
      */
     protected void onLoadFromFile(Event e) {//attach to scene builder
@@ -375,7 +462,20 @@ public class TuitionManagerController {
     protected void onEnrollClick(Event e)
     {
         String firstName = firstNameEnroll.getText();
+        if(firstName.length()<1){
+            vbMenu.appendText("Please enter a first name." + "\n"+ "\n");
+            return;
+        }
+
         String lastName = lastNameEnroll.getText();
+        if(lastName.length()<1){
+            vbMenu.appendText("Please enter a last name." + "\n"+ "\n");
+            return;
+        }
+        if(birthDateEnroll.getValue() == null){
+            vbMenu.appendText("Please specify a date of birth" + "\n"+ "\n");
+            return;
+        }
         String d = birthDateEnroll.getValue().toString().substring(5 , 7) + "/" + birthDateEnroll.getValue().toString().substring(8 , 10) + "/" + birthDateEnroll.getValue().toString().substring(0 , 4);
 
         Date dob = new Date(d);
@@ -415,7 +515,20 @@ public class TuitionManagerController {
     protected void onDropClick(Event e)
     {
         String firstName = firstNameEnroll.getText();
+        if(firstName.length()<1){
+            vbMenu.appendText("Please enter a first name." + "\n"+ "\n");
+            return;
+        }
+
         String lastName = lastNameEnroll.getText();
+        if(lastName.length()<1){
+            vbMenu.appendText("Please enter a last name." + "\n"+ "\n");
+            return;
+        }
+        if(birthDateEnroll.getValue() == null){
+            vbMenu.appendText("Please specify a date of birth" + "\n"+ "\n");
+            return;
+        }
         String d = birthDateEnroll.getValue().toString().substring(5 , 7) + "/" + birthDateEnroll.getValue().toString().substring(8 , 10) + "/" + birthDateEnroll.getValue().toString().substring(0 , 4);
         Date dob = new Date(d);
 
@@ -453,8 +566,21 @@ public class TuitionManagerController {
      */
     protected void onUpdateScholarshipAmountClick(Event e)
     {
-        String firstName = firstNameScholarship.getText();
-        String lastName = lastNameScholarship.getText();
+        String firstName = firstNameEnroll.getText();
+        if(firstName.length()<1){
+            vbMenu.appendText("Please enter a first name." + "\n"+ "\n");
+            return;
+        }
+
+        String lastName = lastNameEnroll.getText();
+        if(lastName.length()<1){
+            vbMenu.appendText("Please enter a last name." + "\n"+ "\n");
+            return;
+        }
+        if(birthDateScholarship.getValue() == null){
+            vbMenu.appendText("Please specify a date of birth." + "\n"+ "\n");
+            return;
+        }
         String d = birthDateScholarship.getValue().toString().substring(5 , 7) + "/" + birthDateScholarship.getValue().toString().substring(8 , 10) + "/" + birthDateScholarship.getValue().toString().substring(0 , 4);
         Date dob = new Date(d);
         int amount = 0;

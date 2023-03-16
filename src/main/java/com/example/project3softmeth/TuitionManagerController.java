@@ -122,6 +122,7 @@ public class TuitionManagerController {
         if(residency.equals("Resident")) {
             //NEED AN EXCEPTION TO MAKE SURE ALL VALUES ARE ENTERED AND NONE OF THE FIELDS ARE MISSING
             String firstName = firstNameRoster.getText();
+
             String lastName = lastNameRoster.getText();
             String dob = birthDate.getValue().toString().substring(5 , 7) + "/" + birthDate.getValue().toString().substring(8 , 10) + "/" + birthDate.getValue().toString().substring(0 , 4);
             int credits = 0;
@@ -482,7 +483,7 @@ public class TuitionManagerController {
     /**
      * Prints the students on roster
      */
-    protected void onPrintByProfileRoster()
+    protected void onPrintByProfileRoster() //shreya
     {
         vbMenu.appendText("testing Roster print" + "\n");
         Student[] StudentList = newRoster.getRoster();
@@ -512,7 +513,7 @@ public class TuitionManagerController {
     /**
      * Prints the students by roster by their school
      */
-    protected void onPrintBySchoolRoster()
+    protected void onPrintBySchoolRoster() //shreya
     {
         vbMenu.appendText("testing Roster print by school" + "\n");
         Student[] StudentList = newRoster.getRoster();
@@ -630,7 +631,7 @@ public class TuitionManagerController {
     /**
      * Prints the students in SOE
      */
-    protected void onPrintBySchoolSOE()
+    protected void onPrintBySchoolSOE() //shreya
     {
         vbMenu.appendText("Testing Roster print by school SOE " + "\n");
         Student[] StudentList = newRoster.getRoster();
@@ -702,7 +703,7 @@ public class TuitionManagerController {
     /**
      * Prints the students who are Enrolled
      */
-    protected void onPrintEnrolled()
+    protected void onPrintEnrolled() //medha
     {
         vbMenu.setText("testing Roster print"+ "\n");
 //        for(int i =0; i<enrollmentList.size; i++)
@@ -716,7 +717,7 @@ public class TuitionManagerController {
     /**
      * Prints the students by tuition due
      */
-    protected void OnPrintTuitionDue()
+    protected void OnPrintTuitionDue() //medha
     {
         vbMenu.setText("Print Tuition Due"+ "\n");
 
@@ -727,7 +728,7 @@ public class TuitionManagerController {
     /**
      * Prints the students by semester
      */
-    protected void onPrintSemesterEnd()
+    protected void onPrintSemesterEnd() //medha
     {
         vbMenu.setText("testing Roster print"+ "\n");
     }

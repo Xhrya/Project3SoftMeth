@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="25c80360-d87a-49ab-86f1-bcaad0488000" name="Changes" comment="made changes to print page gui so that it prints in table format instead of text area in the bottom." />
+    <list default="true" id="25c80360-d87a-49ab-86f1-bcaad0488000" name="Changes" comment="Adding comments to TuitionManagerController" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -22,11 +22,11 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;
   }
-}]]></component>
+}</component>
   <component name="GithubPullRequestsUISettings">
     <option name="selectedUrlAndAccountId">
       <UrlAndAccount>
@@ -199,12 +199,12 @@
       <option name="project" value="LOCAL" />
       <updated>1678901323913</updated>
     </task>
-    <task id="LOCAL-00017" summary="made changes to print page gui so that it prints in table format instead of text area in the bottom.">
-      <created>1678929111136</created>
+    <task id="LOCAL-00017" summary="Adding comments to TuitionManagerController">
+      <created>1678933450167</created>
       <option name="number" value="00017" />
       <option name="presentableId" value="LOCAL-00017" />
       <option name="project" value="LOCAL" />
-      <updated>1678929111136</updated>
+      <updated>1678933450167</updated>
     </task>
     <option name="localTasksCounter" value="18" />
     <servers />
@@ -236,8 +236,8 @@
     <MESSAGE value="add button +etc" />
     <MESSAGE value="Finished the Enroll/Drop and Scholarship tabs. It works well! Also figured out out to print stuff on the actual GUI." />
     <MESSAGE value="figured out how to print. And added statements to textArea so that GUI outputs messages. And finished printby school" />
-    <MESSAGE value="made changes to print page gui so that it prints in table format instead of text area in the bottom." />
-    <option name="LAST_COMMIT_MESSAGE" value="made changes to print page gui so that it prints in table format instead of text area in the bottom." />
+    <MESSAGE value="Adding comments to TuitionManagerController" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding comments to TuitionManagerController" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

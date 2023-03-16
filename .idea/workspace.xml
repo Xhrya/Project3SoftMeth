@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="25c80360-d87a-49ab-86f1-bcaad0488000" name="Changes" comment="Push roster add,drop,changemajor except load from file">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project3softmeth/TuitionManagerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project3softmeth/TuitionManagerController.java" afterDir="false" />
-    </list>
+    <list default="true" id="25c80360-d87a-49ab-86f1-bcaad0488000" name="Changes" comment="Adding comments to TuitionManagerController" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -202,7 +199,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678901323913</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Adding comments to TuitionManagerController">
+      <created>1678933450167</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1678933450167</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -232,7 +236,8 @@
     <MESSAGE value="add button +etc" />
     <MESSAGE value="Finished the Enroll/Drop and Scholarship tabs. It works well! Also figured out out to print stuff on the actual GUI." />
     <MESSAGE value="figured out how to print. And added statements to textArea so that GUI outputs messages. And finished printby school" />
-    <option name="LAST_COMMIT_MESSAGE" value="figured out how to print. And added statements to textArea so that GUI outputs messages. And finished printby school" />
+    <MESSAGE value="Adding comments to TuitionManagerController" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding comments to TuitionManagerController" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

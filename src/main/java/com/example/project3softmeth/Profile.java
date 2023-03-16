@@ -55,6 +55,16 @@ public class Profile implements Comparable<Profile>{
 
     }
 
+    public String getFname()
+    {
+        return fname;
+    }
+
+    public String getLname()
+    {
+        return lname;
+    }
+
     /**
      * Returns true if two profiles are equal
      *

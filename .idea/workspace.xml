@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="25c80360-d87a-49ab-86f1-bcaad0488000" name="Changes" comment="Finished the Enroll/Drop and Scholarship tabs. It works well! Also figured out out to print stuff on the actual GUI.">
+    <list default="true" id="25c80360-d87a-49ab-86f1-bcaad0488000" name="Changes" comment="figured out how to print. And added statements to textArea so that GUI outputs messages. And finished printby school">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project3softmeth/Major.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project3softmeth/Major.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project3softmeth/Roster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project3softmeth/Roster.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project3softmeth/Profile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project3softmeth/Profile.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project3softmeth/TuitionManagerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project3softmeth/TuitionManagerController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/project3softmeth/tuition_manager_view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/project3softmeth/tuition_manager_view.fxml" afterDir="false" />
     </list>
@@ -198,7 +197,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678898043790</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="figured out how to print. And added statements to textArea so that GUI outputs messages. And finished printby school">
+      <created>1678901323913</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1678901323913</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -227,7 +233,8 @@
     <MESSAGE value="worked on Add button" />
     <MESSAGE value="add button +etc" />
     <MESSAGE value="Finished the Enroll/Drop and Scholarship tabs. It works well! Also figured out out to print stuff on the actual GUI." />
-    <option name="LAST_COMMIT_MESSAGE" value="Finished the Enroll/Drop and Scholarship tabs. It works well! Also figured out out to print stuff on the actual GUI." />
+    <MESSAGE value="figured out how to print. And added statements to textArea so that GUI outputs messages. And finished printby school" />
+    <option name="LAST_COMMIT_MESSAGE" value="figured out how to print. And added statements to textArea so that GUI outputs messages. And finished printby school" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

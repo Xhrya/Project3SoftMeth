@@ -63,6 +63,27 @@ public class TuitionManagerController {
     @FXML
     TextField amountScholarship;
 
+    @FXML
+    TextArea firstNamePrint;
+
+    @FXML
+    TextArea lastNamePrint;
+
+    @FXML
+    TextArea creditsPrints;
+
+    @FXML
+    TextArea schoolPrint;
+    @FXML
+    TextArea majorPrint;
+
+    @FXML
+    TextArea dobPrint;
+
+
+
+
+
 
 
     //everything for Enroll/Drop
@@ -77,14 +98,14 @@ public class TuitionManagerController {
 
 
         //delete this later!
-        vbMenu.appendText(residentButtons.getSelectedToggle().toString());
-        vbMenu.appendText("STATUS:"+residency);
-        vbMenu.appendText("Major: " + majorButtons.getSelectedToggle().toString());
-        vbMenu.appendText("MAJOR:" + major);
-        vbMenu.appendText("FirstName:" + firstNameRoster.getText());
-        vbMenu.appendText("Lastname :" + lastNameRoster.getText());
-        vbMenu.appendText("Credits completed:"+ creditsCompletedRoster.getText());
-        vbMenu.appendText("Birthdate :" + birthDate.getValue());
+        //vbMenu.appendText(residentButtons.getSelectedToggle().toString());
+        vbMenu.appendText("STATUS:"+residency + "\n");
+        //vbMenu.appendText("Major: " + majorButtons.getSelectedToggle().toString());
+        vbMenu.appendText("MAJOR:" + major+ "\n");
+        vbMenu.appendText("FirstName:" + firstNameRoster.getText()+ "\n");
+        vbMenu.appendText("Lastname :" + lastNameRoster.getText()+ "\n");
+        vbMenu.appendText("Credits completed:"+ creditsCompletedRoster.getText() + "\n");
+        vbMenu.appendText("Birthdate :" + birthDate.getValue() + "\n");
 //        String dob = birthDate.getValue().toString().substring(5 , 7) + "/" + birthDate.getValue().toString().substring(8 , 10) + "/" + birthDate.getValue().toString().substring(0 , 4);
 //        vbMenu.appendText(dob);
         //delete this later^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -605,6 +626,14 @@ public class TuitionManagerController {
                     if(StudentList[i].getSchool().equals("SC&I"))
                     {
                         vbMenu.appendText(StudentList[i].toString() + "\n");
+                        firstNamePrint.appendText(StudentList[i].getProfile().getFname());
+                        lastNamePrint.appendText(StudentList[i].getProfile().getLname());
+                        String c = Integer.toString(StudentList[i].getProfile().getAge()); //change to get dob
+                        dobPrint.appendText(c);
+                        schoolPrint.appendText(StudentList[i].getSchool());
+                        majorPrint.appendText(StudentList[i].getMajor().toString());
+
+
                     }
                 }
                 if(StudentList[i] ==null)

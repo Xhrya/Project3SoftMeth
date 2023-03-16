@@ -4,31 +4,20 @@
  */
 package com.example.project3softmeth;
 
-import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.layout.VBox;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
 import javafx.stage.FileChooser;
-import javafx.stage.Window;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
+import java.util.NoSuchElementException;
+import java.util.StringTokenizer;
+import java.util.stream.Stream;
+
+
 import java.util.Scanner;
 
 public class TuitionManagerController {
-    //everything for RosteR:
-//    @FXML
-//    private Label welcomeText;
-//    @FXML
-//    protected void onHelloButtonClick() {
-//        welcomeText.setText("Welcome to JavaFX Application!"+ "\n");
-//    }
-
-
 
     Roster newRoster = new Roster();
     Enrollment enrollmentList = new Enrollment();
@@ -88,9 +77,6 @@ public class TuitionManagerController {
     TextArea dobPrint;
     @FXML
     FileChooser uploadFile;
-
-
-
 
 
 
@@ -397,10 +383,24 @@ public class TuitionManagerController {
         }
         String dob = birthDate.getValue().toString().substring(5 , 7) + "/" + birthDate.getValue().toString().substring(8 , 10) + "/" + birthDate.getValue().toString().substring(0 , 4);
 
+        int credits = 0;
+        try{
+            credits = Integer.parseInt((creditsCompletedRoster.getText()));
+        } catch( NumberFormatException creditE) {
+            vbMenu.appendText("Credits completed invalid: not an integer!"+ "\n");
+            return;
+        }
+
         //making the Date, Profile, and Student
         Date RMDate = new Date(dob);
         Profile RMProfile = new Profile(lastName, firstName, RMDate);
         Student RMStudent = newRoster.ProfileToStudent(RMProfile);
+        EnrollStudent testingContainsEnrollment = new EnrollStudent(RMProfile, credits);
+        if(enrollmentList.contains(testingContainsEnrollment))
+        {
+            vbMenu.appendText("Student is currently in the enrollment list, therefore cannot be removed");
+            return;
+        }
         boolean isRemoved = newRoster.remove(RMStudent);
         if (isRemoved) {
             vbMenu.appendText(RMProfile.toString() + " removed from the roster."+ "\n");
@@ -454,21 +454,327 @@ public class TuitionManagerController {
      * Adds, students given a file
      * @param e is the event where the user clicks "Change Major"
      */
-    protected void onLoadFromFile(Event e) {//attach to scene builder
+    protected void onLoadFromFile(Event e) throws FileNotFoundException {//attach to scene builder
         uploadFile = new FileChooser();
         File f = uploadFile.showOpenDialog(null);
         if (f != null) {
-            vbMenu.appendText(f.getPath());
-            try {
-                Scanner fileScanner = new Scanner(f);
-                while (fileScanner.hasNextLine()) {
-                    vbMenu.appendText(fileScanner.toString());
+            FileReader fileReader = new FileReader(f);
+            try (BufferedReader br = new BufferedReader(fileReader)) {
+                String line;
+                while ((line = br.readLine()) != null) {
+
+                    if(line.charAt(0) == 'N')
+                    {
+                        line = line.substring(1, line.length()-1);
+                        fileAddNonResident(line);
+                    }
+                    else if(line.charAt(0) == 'R')
+                    {
+                        line = line.substring(1, line.length()-1);
+                        fileAddResident(line);
+                    }
+                    else if(line.charAt(0) == 'I')
+                    {
+                        line = line.substring(1, line.length()-1);
+
+                        fileAddTristate(line);
+
+                    }
+                    else if(line.charAt(0) == 'T')
+                    {
+                        line = line.substring(1, line.length()-1);
+
+                        fileAddInternational(line);
+
+                    }
+
                 }
-            } catch (FileNotFoundException ex) {
-                System.out.println("no file found");
+                vbMenu.appendText("File succesfully uploaded \n");
+
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
             }
         }
     }
+
+    private void fileAddResident(String line)
+    {
+        StringTokenizer st = new StringTokenizer(line, ",");
+        if(st.countTokens() <=4)
+        {
+            System.out.println("Missing data in line command.");
+            return;
+        }
+
+        String firstName = st.nextToken();
+        String lastName = st.nextToken();
+        String dob = st.nextToken();
+        String major = st.nextToken().toUpperCase();
+        int credits = 0;
+        try{
+            credits = Integer.parseInt((st.nextToken()));
+        }
+        catch( NumberFormatException e)
+        {
+            System.out.println("Credits completed invalid: not an integer!");
+            return;
+        }
+
+        //current date + checking if valid
+        Date d = new Date(dob);
+        boolean isValid = d.isValid();
+
+        //making a student profile and age is valid
+        Profile thisStudent = new Profile(lastName, firstName, d);
+        int age = thisStudent.getAge();
+
+        //checking if major exists
+        boolean containsMajor = false;
+        String[] majorList = {"CS", "EE", "ITI", "BAIT", "MATH"};
+        for (int i = 0; i < majorList.length; i++) {
+            if (majorList[i].equals(major)) {
+                containsMajor = true;
+            }
+        }
+
+        //checking for valid DOB + age, adding an ENUM if this exists
+        if (age > 16) {
+            if (isValid) {
+                if (containsMajor) {
+                    Major studentMajorEnum = Major.valueOf(major);
+                    //making sure credits are positive
+                    if (credits >= 0) {
+                        //checking if student is in the roster, then adding student meeting all requirements
+                        Resident newResident = new Resident(thisStudent, studentMajorEnum, credits);
+                        if (!newRoster.contains(newResident)) {
+                            newRoster.add(newResident);
+                            System.out.println(thisStudent.toString() + " added to the roster.");
+                        } else {
+                            System.out.println(thisStudent.toString() + " is already in the roster.");
+                        }
+                    } else {
+                        System.out.println("Credits completed invalid: cannot be negative!");
+                    }
+                } else {
+                    System.out.println("Major code invalid:" + major.toString());
+                }
+            } else {
+                System.out.println("DOB invalid: " + dob.toString() + " not a valid calendar date!");
+            }
+        } else {
+            System.out.println("DOB invalid: " + dob.toString() + " is younger than 16 years old.");
+        }
+    }
+
+    private void fileAddNonResident(String line)
+    {
+        StringTokenizer st = new StringTokenizer(line, ",");
+        if(st.countTokens() <=4)
+        {
+            System.out.println("Missing data in line command.");
+            return;
+        }
+
+
+        String firstName = st.nextToken();
+        String lastName = st.nextToken();
+        String dob = st.nextToken();
+        String major = st.nextToken().toUpperCase();
+        int credits = Integer.parseInt((st.nextToken()));
+
+        //current date + checking if valid
+        Date d = new Date(dob);
+        boolean isValid = d.isValid();
+
+        //making a student profile and age is valid
+        Profile thisStudent = new Profile(lastName, firstName, d);
+        int age = thisStudent.getAge();
+
+        String[] majorList = {"CS", "EE", "ITI", "BAIT", "MATH"};
+        //checking if major exists
+        boolean containsMajor = false;
+        for (int i = 0; i < majorList.length; i++) {
+            if (majorList[i].equals(major)) {
+                containsMajor = true;
+            }
+        }
+
+        //checking for valid DOB + age, adding an ENUM if this exists
+        if (age > 16) {
+            if (isValid) {
+                if (containsMajor) {
+                    Major studentMajorEnum = Major.valueOf(major);
+                    //making sure credits are positive
+                    if (credits >= 0) {
+                        //checking if student is in the roster, then adding student meeting all requirements
+                        Resident newNonResident = new Resident(thisStudent, studentMajorEnum, credits);
+                        if (!newRoster.contains(newNonResident)) {
+                            newRoster.add(newNonResident);
+                            System.out.println(thisStudent.toString() + " added to the roster.");
+                        } else {
+                            System.out.println(thisStudent.toString() + " is already in the roster.");
+                        }
+                    } else {
+                        System.out.println("Credits completed invalid: cannot be negative!");
+                    }
+                } else {
+                    System.out.println("Major code invalid:" + major.toString());
+                }
+            } else {
+                System.out.println("DOB invalid: " + dob.toString() + " not a valid calendar date!");
+            }
+        } else {
+            System.out.println("DOB invalid: " + dob.toString() + " is younger than 16 years old.");
+        }
+
+    }
+
+    private void fileAddTristate(String line)
+    {
+        StringTokenizer st = new StringTokenizer(line, ",");
+        String[] majorList = {"CS", "EE", "ITI", "BAIT", "MATH"};
+
+        if(st.countTokens() <=4)
+        {
+            System.out.println("Missing data in line command.");
+            return;
+        }
+
+        String firstName = st.nextToken();
+        String lastName = st.nextToken();
+        String dob = st.nextToken();
+        String major = st.nextToken().toUpperCase();
+        int credits = Integer.parseInt((st.nextToken()));
+
+        String state = "";
+        try{
+            state = st.nextToken().toUpperCase();
+        }
+        catch( NoSuchElementException e)
+        {
+            System.out.println("Missing the state code");
+            return;
+        }
+
+
+        if(! (state.equals("CT") || state.equals("NY")))
+        {
+            System.out.println(state + ": Invalid state code");
+            return;
+        }
+
+        //current date + checking if valid
+        Date d = new Date(dob);
+        boolean isValid = d.isValid();
+
+        //making a student profile and age is valid
+        Profile thisStudent = new Profile(lastName, firstName, d);
+        int age = thisStudent.getAge();
+
+        //checking if major exists
+        boolean containsMajor = false;
+        for (int i = 0; i < majorList.length; i++) {
+            if (majorList[i].equals(major)) {
+                containsMajor = true;
+            }
+        }
+
+        //checking for valid DOB + age, adding an ENUM if this exists
+        if (age > 16) {
+            if (isValid) {
+                if (containsMajor) {
+                    Major studentMajorEnum = Major.valueOf(major);
+                    //making sure credits are positive
+                    if (credits >= 0) {
+
+                        //checking if student is in the roster, then adding student meeting all requirements
+                        TriState newTriState = new TriState(thisStudent, studentMajorEnum, credits, state);
+                        if (!(newRoster.contains(newTriState))) {
+                            newRoster.add(newTriState);
+                            //can create an instance of the bigger object and assign a smaller object to it
+
+                            System.out.println(thisStudent.toString() + " added to the roster.");
+                        } else {
+                            System.out.println(thisStudent.toString() + " is already in the roster.");
+                        }
+                    } else {
+                        System.out.println("Credits completed invalid: cannot be negative!");
+                    }
+                } else {
+                    System.out.println("Major code invalid:" + major.toString());
+                }
+            } else {
+                System.out.println("DOB invalid: " + dob.toString() + " not a valid calendar date!");
+            }
+        } else {
+            System.out.println("DOB invalid: " + dob.toString() + " is younger than 16 years old.");
+        }
+    }
+
+    private void fileAddInternational(String line)
+    {
+        StringTokenizer st = new StringTokenizer(line, ",");
+        String[] majorList = {"CS", "EE", "ITI", "BAIT", "MATH"};
+
+        if(st.countTokens() <=5)
+        {
+            System.out.println("Missing data in line command.");
+            return;
+        }
+
+        String firstName = st.nextToken();
+        String lastName = st.nextToken();
+        String dob = st.nextToken();
+        String major = st.nextToken().toUpperCase();
+        int credits = Integer.parseInt((st.nextToken()));
+        boolean abroad = Boolean.parseBoolean((st.nextToken()));
+
+        //current date + checking if valid
+        Date d = new Date(dob);
+        boolean isValid = d.isValid();
+
+        //making a student profile and age is valid
+        Profile thisStudent = new Profile(lastName, firstName, d);
+        int age = thisStudent.getAge();
+
+        //checking if major exists
+        boolean containsMajor = false;
+        for (int i = 0; i < majorList.length; i++) {
+            if (majorList[i].equals(major)) {
+                containsMajor = true;
+            }
+        }
+
+        //checking for valid DOB + age, adding an ENUM if this exists
+        if (age > 16) {
+            if (isValid) {
+                if (containsMajor) {
+                    Major studentMajorEnum = Major.valueOf(major);
+                    //making sure credits are positive
+                    if (credits >= 0) {
+                        //checking if student is in the roster, then adding student meeting all requirements
+                        International i = new International(thisStudent, studentMajorEnum, credits, abroad);
+                        if (!newRoster.contains(i)) {
+                            newRoster.add(i);
+                            System.out.println(thisStudent.toString() + " added to the roster.");
+                        } else {
+                            System.out.println(thisStudent.toString() + " is already in the roster.");
+                        }
+                    } else {
+                        System.out.println("Credits completed invalid: cannot be negative!");
+                    }
+                } else {
+                    System.out.println("Major code invalid:" + major.toString());
+                }
+            } else {
+                System.out.println("DOB invalid: " + dob.toString() + " not a valid calendar date!");
+            }
+        } else {
+            System.out.println("DOB invalid: " + dob.toString() + " is younger than 16 years old.");
+        }
+
+    }
+
 
 
     @FXML
@@ -631,7 +937,7 @@ public class TuitionManagerController {
         vbMenu.appendText("testing Roster print" + "\n");
         Student[] StudentList = newRoster.getRoster();
 
-        if(StudentList.length ==0)
+        if(StudentList == null)
         {
             vbMenu.appendText("Roster is empty" + "\n" );
         }
@@ -676,7 +982,7 @@ public class TuitionManagerController {
             StudentList[i] = temp;
         }
 
-        if(StudentList.length ==0)
+        if(StudentList ==null)
         {
             vbMenu.appendText("Roster is empty" + "\n" );
         }
@@ -715,7 +1021,7 @@ public class TuitionManagerController {
         vbMenu.appendText("testing Roster print by school RBS " + "\n");
         Student[] StudentList = newRoster.getRoster();
 
-        if(StudentList.length ==0)
+        if(StudentList == null)
         {
             vbMenu.appendText("Roster is empty" + "\n" );
         }
@@ -747,7 +1053,7 @@ public class TuitionManagerController {
         vbMenu.appendText("Testing Roster print by school SAS " + "\n");
         Student[] StudentList = newRoster.getRoster();
 
-        if(StudentList.length ==0)
+        if(StudentList == null)
         {
             vbMenu.appendText("Roster is empty" + "\n" );
         }
@@ -779,7 +1085,7 @@ public class TuitionManagerController {
         vbMenu.appendText("Testing Roster print by school SOE " + "\n");
         Student[] StudentList = newRoster.getRoster();
 
-        if(StudentList.length ==0)
+        if(StudentList == null)
         {
             vbMenu.appendText("Roster is empty" + "\n" );
         }
@@ -811,7 +1117,7 @@ public class TuitionManagerController {
         vbMenu.appendText("testing Roster print by school SC&I " + "\n");
         Student[] StudentList = newRoster.getRoster();
 
-        if(StudentList.length ==0)
+        if(StudentList ==null)
         {
             vbMenu.appendText("Roster is empty" + "\n" );
         }
@@ -823,14 +1129,12 @@ public class TuitionManagerController {
                     if(StudentList[i].getSchool().equals("SC&I"))
                     {
                         vbMenu.appendText(StudentList[i].toString() + "\n");
-                        firstNamePrint.appendText(StudentList[i].getProfile().getFname());
-                        lastNamePrint.appendText(StudentList[i].getProfile().getLname());
+                        firstNamePrint.appendText(StudentList[i].getProfile().getFname() + "\n");
+                        lastNamePrint.appendText(StudentList[i].getProfile().getLname()+ "\n");
                         String c = Integer.toString(StudentList[i].getProfile().getAge()); //change to get dob
                         dobPrint.appendText(c);
-                        schoolPrint.appendText(StudentList[i].getSchool());
-                        majorPrint.appendText(StudentList[i].getMajor().toString());
-
-
+                        schoolPrint.appendText(StudentList[i].getSchool()+ "\n");
+                        majorPrint.appendText(StudentList[i].getMajor().toString()+ "\n");
                     }
                 }
                 if(StudentList[i] ==null)
@@ -876,8 +1180,4 @@ public class TuitionManagerController {
         vbMenu.setText("testing Roster print"+ "\n");
     }
 
-
-
-
     }
-

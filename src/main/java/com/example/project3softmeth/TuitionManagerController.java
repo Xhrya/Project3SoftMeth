@@ -15,6 +15,9 @@ import javafx.stage.FileChooser;
 import javafx.stage.Window;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Scanner;
 
 public class TuitionManagerController {
     //everything for RosteR:
@@ -83,6 +86,8 @@ public class TuitionManagerController {
 
     @FXML
     TextArea dobPrint;
+    @FXML
+    FileChooser uploadFile;
 
 
 
@@ -450,7 +455,19 @@ public class TuitionManagerController {
      * @param e is the event where the user clicks "Change Major"
      */
     protected void onLoadFromFile(Event e) {//attach to scene builder
-
+        uploadFile = new FileChooser();
+        File f = uploadFile.showOpenDialog(null);
+        if (f != null) {
+            vbMenu.appendText(f.getPath());
+            try {
+                Scanner fileScanner = new Scanner(f);
+                while (fileScanner.hasNextLine()) {
+                    vbMenu.appendText(fileScanner.toString());
+                }
+            } catch (FileNotFoundException ex) {
+                System.out.println("no file found");
+            }
+        }
     }
 
 

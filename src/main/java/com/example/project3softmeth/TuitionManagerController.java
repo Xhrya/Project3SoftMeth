@@ -18,13 +18,10 @@ import java.util.stream.Stream;
 import java.util.Scanner;
 
 public class TuitionManagerController {
-
     Roster newRoster = new Roster();
     Enrollment enrollmentList = new Enrollment();
-
     @FXML
     TextArea vbMenu;
-
     @FXML
     ToggleGroup residentButtons;
     @FXML
@@ -49,7 +46,6 @@ public class TuitionManagerController {
     TextField creditsEnroll;
     @FXML
     DatePicker birthDateEnroll;
-
     @FXML
     TextField firstNameScholarship;
     @FXML
@@ -58,32 +54,24 @@ public class TuitionManagerController {
     DatePicker birthDateScholarship;
     @FXML
     TextField amountScholarship;
-
     @FXML
     TextArea firstNamePrint;
-
     @FXML
     TextArea lastNamePrint;
-
     @FXML
     TextArea creditsPrints;
-
     @FXML
     TextArea schoolPrint;
     @FXML
     TextArea majorPrint;
-
     @FXML
     TextArea dobPrint;
-
     @FXML
     TextArea standingPrint;
     @FXML
+    TextArea tuitionDuePrint;
+    @FXML
     FileChooser uploadFile;
-
-
-
-
 
 
     //everything for Enroll/Drop
@@ -511,7 +499,7 @@ public class TuitionManagerController {
         StringTokenizer st = new StringTokenizer(line, ",");
         if(st.countTokens() <=4)
         {
-            System.out.println("Missing data in line command.");
+            vbMenu.appendText("Missing data in line command." + "\n"+ "\n");
             return;
         }
 
@@ -525,7 +513,7 @@ public class TuitionManagerController {
         }
         catch( NumberFormatException e)
         {
-            System.out.println("Credits completed invalid: not an integer!");
+            vbMenu.appendText("Credits completed invalid" + "\n"+ "\n");
             return;
         }
 
@@ -557,21 +545,21 @@ public class TuitionManagerController {
                         Resident newResident = new Resident(thisStudent, studentMajorEnum, credits);
                         if (!newRoster.contains(newResident)) {
                             newRoster.add(newResident);
-                            System.out.println(thisStudent.toString() + " added to the roster.");
+                            vbMenu.appendText(thisStudent.toString() + " added to the roster." + "\n"+ "\n");
                         } else {
-                            System.out.println(thisStudent.toString() + " is already in the roster.");
+                            vbMenu.appendText(thisStudent.toString() + " is already in the roster." + "\n"+ "\n");
                         }
                     } else {
-                        System.out.println("Credits completed invalid: cannot be negative!");
+                        vbMenu.appendText("Credits completed invalid: cannot be negative!" + "\n"+ "\n");
                     }
                 } else {
-                    System.out.println("Major code invalid:" + major.toString());
+                    vbMenu.appendText("Major code invalid:" + major.toString() + "\n"+ "\n");
                 }
             } else {
-                System.out.println("DOB invalid: " + dob.toString() + " not a valid calendar date!");
+                vbMenu.appendText("DOB invalid: " + dob.toString() + " not a valid calendar date!" + "\n"+ "\n");
             }
         } else {
-            System.out.println("DOB invalid: " + dob.toString() + " is younger than 16 years old.");
+            vbMenu.appendText("DOB invalid: " + dob.toString() + " is younger than 16 years old." + "\n"+ "\n");
         }
     }
 
@@ -580,7 +568,7 @@ public class TuitionManagerController {
         StringTokenizer st = new StringTokenizer(line, ",");
         if(st.countTokens() <=4)
         {
-            System.out.println("Missing data in line command.");
+            vbMenu.appendText("Missing data in line command." + "\n"+ "\n");
             return;
         }
 
@@ -619,21 +607,21 @@ public class TuitionManagerController {
                         Resident newNonResident = new Resident(thisStudent, studentMajorEnum, credits);
                         if (!newRoster.contains(newNonResident)) {
                             newRoster.add(newNonResident);
-                            System.out.println(thisStudent.toString() + " added to the roster.");
+                            vbMenu.appendText(thisStudent.toString() + " added to the roster." + "\n"+ "\n");
                         } else {
-                            System.out.println(thisStudent.toString() + " is already in the roster.");
+                            vbMenu.appendText(thisStudent.toString() + " is already in the roster." + "\n"+ "\n");
                         }
                     } else {
-                        System.out.println("Credits completed invalid: cannot be negative!");
+                        vbMenu.appendText("Credits completed invalid: cannot be negative!" + "\n"+ "\n");
                     }
                 } else {
-                    System.out.println("Major code invalid:" + major.toString());
+                    vbMenu.appendText("Major code invalid:" + major.toString() + "\n"+ "\n");
                 }
             } else {
-                System.out.println("DOB invalid: " + dob.toString() + " not a valid calendar date!");
+                vbMenu.appendText("DOB invalid: " + dob.toString() + " not a valid calendar date!" + "\n"+ "\n");
             }
         } else {
-            System.out.println("DOB invalid: " + dob.toString() + " is younger than 16 years old.");
+            vbMenu.appendText("DOB invalid: " + dob.toString() + " is younger than 16 years old." + "\n"+ "\n");
         }
 
     }
@@ -645,7 +633,7 @@ public class TuitionManagerController {
 
         if(st.countTokens() <=4)
         {
-            System.out.println("Missing data in line command.");
+            vbMenu.appendText("Missing data in line command." + "\n"+ "\n");
             return;
         }
 
@@ -661,14 +649,14 @@ public class TuitionManagerController {
         }
         catch( NoSuchElementException e)
         {
-            System.out.println("Missing the state code");
+            vbMenu.appendText("Missing state code." + "\n"+ "\n");
             return;
         }
 
 
         if(! (state.equals("CT") || state.equals("NY")))
         {
-            System.out.println(state + ": Invalid state code");
+            vbMenu.appendText(state + ": Invalid state code"+ "\n"+ "\n");
             return;
         }
 
@@ -701,22 +689,21 @@ public class TuitionManagerController {
                         if (!(newRoster.contains(newTriState))) {
                             newRoster.add(newTriState);
                             //can create an instance of the bigger object and assign a smaller object to it
-
-                            System.out.println(thisStudent.toString() + " added to the roster.");
+                            vbMenu.appendText(thisStudent.toString() + " added to the roster." + "\n"+ "\n");
                         } else {
-                            System.out.println(thisStudent.toString() + " is already in the roster.");
+                            vbMenu.appendText(thisStudent.toString() + " is already in the roster." + "\n"+ "\n");
                         }
                     } else {
-                        System.out.println("Credits completed invalid: cannot be negative!");
+                        vbMenu.appendText("Credits completed invalid: cannot be negative!" + "\n"+ "\n");
                     }
                 } else {
-                    System.out.println("Major code invalid:" + major.toString());
+                    vbMenu.appendText("Major code invalid:" + major.toString() + "\n"+ "\n");
                 }
             } else {
-                System.out.println("DOB invalid: " + dob.toString() + " not a valid calendar date!");
+                vbMenu.appendText("DOB invalid: " + dob.toString() + " not a valid calendar date!" + "\n"+ "\n");
             }
         } else {
-            System.out.println("DOB invalid: " + dob.toString() + " is younger than 16 years old.");
+            vbMenu.appendText("DOB invalid: " + dob.toString() + " is younger than 16 years old." + "\n"+ "\n");
         }
     }
 
@@ -727,7 +714,7 @@ public class TuitionManagerController {
 
         if(st.countTokens() <=5)
         {
-            System.out.println("Missing data in line command.");
+           vbMenu.appendText("Missing data in line command." + "\n"+ "\n");
             return;
         }
 
@@ -765,21 +752,21 @@ public class TuitionManagerController {
                         International i = new International(thisStudent, studentMajorEnum, credits, abroad);
                         if (!newRoster.contains(i)) {
                             newRoster.add(i);
-                            System.out.println(thisStudent.toString() + " added to the roster.");
+                            vbMenu.appendText(thisStudent.toString() + " added to the roster.");
                         } else {
-                            System.out.println(thisStudent.toString() + " is already in the roster.");
+                            vbMenu.appendText(thisStudent.toString() + " is already in the roster." + "\n"+ "\n");
                         }
                     } else {
-                        System.out.println("Credits completed invalid: cannot be negative!");
+                        vbMenu.appendText("Credits completed invalid: cannot be negative!" + "\n"+ "\n");
                     }
                 } else {
-                    System.out.println("Major code invalid:" + major.toString());
+                    vbMenu.appendText("Major code invalid:" + major.toString() + "\n"+ "\n");
                 }
             } else {
-                System.out.println("DOB invalid: " + dob.toString() + " not a valid calendar date!");
+                vbMenu.appendText("DOB invalid: " + dob.toString() + " not a valid calendar date!" + "\n"+ "\n");
             }
         } else {
-            System.out.println("DOB invalid: " + dob.toString() + " is younger than 16 years old.");
+            vbMenu.appendText("DOB invalid: " + dob.toString() + " is younger than 16 years old." + "\n"+ "\n");
         }
 
     }
@@ -834,7 +821,7 @@ public class TuitionManagerController {
         else
         {
             enrollmentList.add(newEnroll);
-            vbMenu.appendText(enrollProfile.toString() + "enrolled " + credits + " credits"+ "\n");
+            vbMenu.appendText(enrollProfile.toString() + " enrolled " + credits + " credits"+ "\n");
         }
     }
 
@@ -1334,7 +1321,7 @@ public class TuitionManagerController {
     /**
      * Prints the students who are Enrolled
      */
-    protected void onPrintEnrolled() //medha
+    protected void onPrintEnrolled()
     {
 
         vbMenu.appendText("Prints enrolled List " + "\n");
@@ -1438,9 +1425,8 @@ public class TuitionManagerController {
     /**
      * Prints the students by tuition due
      */
-    protected void OnPrintTuitionDue() //medha
-    {
-        vbMenu.setText("Print Tuition Due"+ "\n");
+    protected void OnPrintTuitionDue() {
+        vbMenu.setText("Print Tuition Due" + "\n");
         firstNamePrint.setText("");
         lastNamePrint.setText("");
         dobPrint.setText("");
@@ -1448,57 +1434,62 @@ public class TuitionManagerController {
         majorPrint.setText("");
         creditsPrints.setText("");
         standingPrint.setText("");
+        tuitionDuePrint.setText("");
 
+        EnrollStudent[] enrollStudentsList = enrollmentList.getEnrollStudents();
+        Student[] studentsEnrolled = newRoster.getRoster();
+        if (enrollStudentsList == null) {
+            vbMenu.appendText("Enrollment list is empty" + "\n");
+        } else {
+            for (int i = 0; i < enrollStudentsList.length; i++) {
+                if (enrollStudentsList[i] != null) {
 
-        //need a new line for tuition?
-
-
+                    vbMenu.appendText(enrollStudentsList[i].toString() + "\n");
+                    firstNamePrint.appendText(enrollStudentsList[i].getProfile().getFname() + "\n");
+                    lastNamePrint.appendText(enrollStudentsList[i].getProfile().getLname() + "\n");
+                    String c = (enrollStudentsList[i].getProfile().getDateOfBirth());
+                    dobPrint.appendText(c + "\n");
+                    creditsPrints.appendText(enrollStudentsList[i].getCreditsEnrolled() + "\n");
+                    for (int j = 0; j < newRoster.getSize(); j++) {
+                        if (studentsEnrolled[j].getProfile().equals(enrollStudentsList[i].getProfile())) {
+                            tuitionDuePrint.appendText("$" + studentsEnrolled[j].tuitionDue(enrollStudentsList[i].getCreditsEnrolled()) + "\n");
+                        }
+                    }
+                    if (enrollStudentsList[i] == null) {
+                        break;
+                    }
+                }
+            }
+        }
     }
 
     @FXML
     /**
      * Prints the students by semester
      */
-    protected void onPrintSemesterEnd() //done
-    {
+    protected void onPrintSemesterEnd(){
         vbMenu.setText("Semester end print"+ "\n");
         EnrollStudent[] EnrollStudentList = enrollmentList.getEnrollStudents();
         Student[] StudentList = newRoster.getRoster();
 
-
         if (enrollmentList.getSize() == 0) {
             vbMenu.appendText("Student enrollment list is empty");
         } else {
-
-            for(int i =0; i< enrollmentList.getSize(); i++)
-            {
-
+            for(int i =0; i< enrollmentList.getSize(); i++) {
                 EnrollStudent temp = EnrollStudentList[i];
-
-                for(int j= 0; j< StudentList.length; j++)
-                {
-                    if(StudentList[i].getProfile().equals(temp.getProfile()))
-                    {
-
+                for(int j=0; j< newRoster.getSize(); j++) {
+                    if(StudentList[j].getProfile().equals(temp.getProfile())) {
                         StudentList[i].addCredits(temp.getCreditsEnrolled());
                     }
                 }
             }
         }
-
-
-        if(StudentList ==null)
-        {
+        if(StudentList==null) {
             vbMenu.appendText("Roster is empty" + "\n" );
-        }
-        else{
-            for(int i=0; i<StudentList.length; i++)
-            {
-                if(StudentList[i] != null)
-                {
-
-                    if(StudentList[i].returnCredits() >=120)
-                    {
+        }else{
+            for(int i=0; i<StudentList.length; i++) {
+                if(StudentList[i] != null) {
+                    if(StudentList[i].returnCredits() >=120) {
                         vbMenu.appendText(StudentList[i].toString() + "\n");
                         firstNamePrint.appendText(StudentList[i].getProfile().getFname() + "\n");
                         lastNamePrint.appendText(StudentList[i].getProfile().getLname()+ "\n");
@@ -1508,11 +1499,9 @@ public class TuitionManagerController {
                         majorPrint.appendText(StudentList[i].getMajor().toString()+ "\n");
                         creditsPrints.appendText(StudentList[i].returnCredits() + "\n");
                         standingPrint.appendText(StudentList[i].getYear() + "\n");
-
                     }
                 }
-                if(StudentList[i] ==null)
-                {
+                if(StudentList[i] ==null){
                     break;
                 }
             }

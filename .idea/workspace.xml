@@ -4,8 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="25c80360-d87a-49ab-86f1-bcaad0488000" name="Changes" comment="Fixing errors so program does not crash">
+    <list default="true" id="25c80360-d87a-49ab-86f1-bcaad0488000" name="Changes" comment="Figured out how to load a file and completed onFileLoad method">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project3softmeth/Profile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project3softmeth/Profile.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project3softmeth/TuitionManagerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project3softmeth/TuitionManagerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/project3softmeth/tuition_manager_view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/project3softmeth/tuition_manager_view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -215,7 +218,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678993464324</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Figured out how to load a file and completed onFileLoad method">
+      <created>1678998867936</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1678998867936</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -247,7 +257,19 @@
     <MESSAGE value="figured out how to print. And added statements to textArea so that GUI outputs messages. And finished printby school" />
     <MESSAGE value="Adding comments to TuitionManagerController" />
     <MESSAGE value="Fixing errors so program does not crash" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixing errors so program does not crash" />
+    <MESSAGE value="Figured out how to load a file and completed onFileLoad method" />
+    <option name="LAST_COMMIT_MESSAGE" value="Figured out how to load a file and completed onFileLoad method" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/project3softmeth/TuitionManagerController.java</url>
+          <line>1001</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

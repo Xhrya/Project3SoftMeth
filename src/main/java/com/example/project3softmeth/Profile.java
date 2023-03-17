@@ -22,6 +22,10 @@ public class Profile implements Comparable<Profile>{
         this.dob = d;
     }
 
+    public String getDateOfBirth()
+    {
+        return dob.toString();
+    }
     /**
      * Gets the age of the student given the date of birth
      * @return integer which is the age

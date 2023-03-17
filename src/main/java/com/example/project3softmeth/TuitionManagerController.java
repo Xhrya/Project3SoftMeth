@@ -75,8 +75,13 @@ public class TuitionManagerController {
 
     @FXML
     TextArea dobPrint;
+
+    @FXML
+    TextArea standingPrint;
     @FXML
     FileChooser uploadFile;
+
+
 
 
 
@@ -934,10 +939,33 @@ public class TuitionManagerController {
      */
     protected void onPrintByProfileRoster() //shreya
     {
-        vbMenu.appendText("testing Roster print" + "\n");
+        firstNamePrint.setText("");
+        lastNamePrint.setText("");
+        dobPrint.setText("");
+        schoolPrint.setText("");
+        majorPrint.setText("");
+        creditsPrints.setText("");
+        standingPrint.setText("");
+
+        vbMenu.appendText("testing Roster print by school" + "\n");
         Student[] StudentList = newRoster.getRoster();
 
-        if(StudentList == null)
+        int size = newRoster.getSize();
+
+
+        for (int i = 0; i < size; i++) {
+            int min = i;
+            for (int j = 1 + i; j < size; j++) {
+                if ((StudentList[j].compareTo(StudentList[min])) == -1) {
+                    min = j;
+                }
+            }
+            Student temp = StudentList[min];
+            StudentList[min] = StudentList[i];
+            StudentList[i] = temp;
+        }
+
+        if(StudentList ==null)
         {
             vbMenu.appendText("Roster is empty" + "\n" );
         }
@@ -947,6 +975,15 @@ public class TuitionManagerController {
                 if(StudentList[i] != null)
                 {
                     vbMenu.appendText(StudentList[i].toString() + "\n");
+                    firstNamePrint.appendText(StudentList[i].getProfile().getFname() + "\n");
+                    lastNamePrint.appendText(StudentList[i].getProfile().getLname()+ "\n");
+                    String c = (StudentList[i].getProfile().getDateOfBirth());
+                    dobPrint.appendText(c + "\n");
+                    schoolPrint.appendText(StudentList[i].getSchool()+ "\n");
+                    majorPrint.appendText(StudentList[i].getMajor().toString()+ "\n");
+                    creditsPrints.appendText(StudentList[i].returnCredits() + "\n");
+                    standingPrint.appendText(StudentList[i].getYear() + "\n");
+
                 }
                 if(StudentList[i] ==null)
                 {
@@ -956,7 +993,6 @@ public class TuitionManagerController {
 
         }
 
-
     }
     @FXML
     /**
@@ -964,6 +1000,14 @@ public class TuitionManagerController {
      */
     protected void onPrintBySchoolRoster() //shreya
     {
+        firstNamePrint.setText("");
+        lastNamePrint.setText("");
+        dobPrint.setText("");
+        schoolPrint.setText("");
+        majorPrint.setText("");
+        creditsPrints.setText("");
+        standingPrint.setText("");
+
         vbMenu.appendText("testing Roster print by school" + "\n");
         Student[] StudentList = newRoster.getRoster();
 
@@ -992,6 +1036,15 @@ public class TuitionManagerController {
                 if(StudentList[i] != null)
                 {
                     vbMenu.appendText(StudentList[i].toString() + "\n");
+                    firstNamePrint.appendText(StudentList[i].getProfile().getFname() + "\n");
+                    lastNamePrint.appendText(StudentList[i].getProfile().getLname()+ "\n");
+                    String c = (StudentList[i].getProfile().getDateOfBirth());
+                    dobPrint.appendText(c + "\n");
+                    schoolPrint.appendText(StudentList[i].getSchool()+ "\n");
+                    majorPrint.appendText(StudentList[i].getMajor().toString()+ "\n");
+                    creditsPrints.appendText(StudentList[i].returnCredits() + "\n");
+                    standingPrint.appendText(StudentList[i].getYear() + "\n");
+
                 }
                 if(StudentList[i] ==null)
                 {
@@ -1009,7 +1062,72 @@ public class TuitionManagerController {
      */
     protected void onPrintByStandingRoster()
     {
-        vbMenu.setText("testing Roster print"+ "\n");
+        firstNamePrint.setText("");
+        lastNamePrint.setText("");
+        dobPrint.setText("");
+        schoolPrint.setText("");
+        majorPrint.setText("");
+        creditsPrints.setText("");
+        standingPrint.setText("");
+
+
+        vbMenu.appendText("Print by Standing Roster" + "\n");
+        Student[] StudentList = newRoster.getRoster();
+
+        int size = newRoster.getSize();
+        for (int i = 0; i <size; i++) {
+            int min = i;
+            for (int j = 1 + i; j < size; j++) {
+                if ((StudentList[j].compareTo(StudentList[min])) == -1) {
+                    min = j;
+                }
+            }
+            Student temp = StudentList[min];
+            StudentList[min] = StudentList[i];
+            StudentList[i] = temp;
+        }
+
+        for (int i = 0; i < size; i++) {
+            int min = i;
+            for (int j = 1 + i; j < size; j++) {
+
+                if (StudentList[j].getYear().compareTo((StudentList[min].getYear())) < 0) {
+
+                    min = j;
+                }
+            }
+            Student temp = StudentList[min];
+            StudentList[min] = StudentList[i];
+            StudentList[i] = temp;
+        }
+
+        if(StudentList ==null)
+        {
+            vbMenu.appendText("Roster is empty" + "\n" );
+        }
+        else{
+            for(int i=0; i<StudentList.length; i++)
+            {
+                if(StudentList[i] != null)
+                {
+                    vbMenu.appendText(StudentList[i].toString() + "\n");
+                    firstNamePrint.appendText(StudentList[i].getProfile().getFname() + "\n");
+                    lastNamePrint.appendText(StudentList[i].getProfile().getLname()+ "\n");
+                    String c = (StudentList[i].getProfile().getDateOfBirth());
+                    dobPrint.appendText(c + "\n");
+                    schoolPrint.appendText(StudentList[i].getSchool()+ "\n");
+                    majorPrint.appendText(StudentList[i].getMajor().toString()+ "\n");
+                    creditsPrints.appendText(StudentList[i].returnCredits() + "\n");
+                    standingPrint.appendText(StudentList[i].getYear() + "\n");
+                }
+                if(StudentList[i] ==null)
+                {
+                    break;
+                }
+            }
+
+        }
+
     }
 
     @FXML
@@ -1018,10 +1136,18 @@ public class TuitionManagerController {
      */
     protected void onPrintBySchoolRBS()
     {
+        firstNamePrint.setText("");
+        lastNamePrint.setText("");
+        dobPrint.setText("");
+        schoolPrint.setText("");
+        majorPrint.setText("");
+        creditsPrints.setText("");
+        standingPrint.setText("");
+
         vbMenu.appendText("testing Roster print by school RBS " + "\n");
         Student[] StudentList = newRoster.getRoster();
 
-        if(StudentList == null)
+        if(StudentList ==null)
         {
             vbMenu.appendText("Roster is empty" + "\n" );
         }
@@ -1033,6 +1159,15 @@ public class TuitionManagerController {
                     if(StudentList[i].getSchool().equals("RBS"))
                     {
                         vbMenu.appendText(StudentList[i].toString() + "\n");
+                        firstNamePrint.appendText(StudentList[i].getProfile().getFname() + "\n");
+                        lastNamePrint.appendText(StudentList[i].getProfile().getLname()+ "\n");
+                        String c = (StudentList[i].getProfile().getDateOfBirth());
+                        dobPrint.appendText(c + "\n");
+                        schoolPrint.appendText(StudentList[i].getSchool()+ "\n");
+                        majorPrint.appendText(StudentList[i].getMajor().toString()+ "\n");
+                        creditsPrints.appendText(StudentList[i].returnCredits() + "\n");
+                        standingPrint.appendText(StudentList[i].getYear() + "\n");
+
                     }
                 }
                 if(StudentList[i] ==null)
@@ -1050,10 +1185,18 @@ public class TuitionManagerController {
      */
     protected void onPrintBySchoolSAS()
     {
-        vbMenu.appendText("Testing Roster print by school SAS " + "\n");
+        vbMenu.appendText("testing Roster print by school SAS " + "\n");
         Student[] StudentList = newRoster.getRoster();
 
-        if(StudentList == null)
+        firstNamePrint.setText("");
+        lastNamePrint.setText("");
+        dobPrint.setText("");
+        schoolPrint.setText("");
+        majorPrint.setText("");
+        creditsPrints.setText("");
+        standingPrint.setText("");
+
+        if(StudentList ==null)
         {
             vbMenu.appendText("Roster is empty" + "\n" );
         }
@@ -1065,6 +1208,15 @@ public class TuitionManagerController {
                     if(StudentList[i].getSchool().equals("SAS"))
                     {
                         vbMenu.appendText(StudentList[i].toString() + "\n");
+                        firstNamePrint.appendText(StudentList[i].getProfile().getFname() + "\n");
+                        lastNamePrint.appendText(StudentList[i].getProfile().getLname()+ "\n");
+                        String c = (StudentList[i].getProfile().getDateOfBirth());
+                        dobPrint.appendText(c + "\n");
+                        schoolPrint.appendText(StudentList[i].getSchool()+ "\n");
+                        majorPrint.appendText(StudentList[i].getMajor().toString()+ "\n");
+                        creditsPrints.appendText(StudentList[i].returnCredits() + "\n");
+                        standingPrint.appendText(StudentList[i].getYear() + "\n");
+
                     }
                 }
                 if(StudentList[i] ==null)
@@ -1082,10 +1234,18 @@ public class TuitionManagerController {
      */
     protected void onPrintBySchoolSOE() //shreya
     {
-        vbMenu.appendText("Testing Roster print by school SOE " + "\n");
+        firstNamePrint.setText("");
+        lastNamePrint.setText("");
+        dobPrint.setText("");
+        schoolPrint.setText("");
+        majorPrint.setText("");
+        creditsPrints.setText("");
+        standingPrint.setText("");
+
+        vbMenu.appendText("testing Roster print by school SOE " + "\n");
         Student[] StudentList = newRoster.getRoster();
 
-        if(StudentList == null)
+        if(StudentList ==null)
         {
             vbMenu.appendText("Roster is empty" + "\n" );
         }
@@ -1097,6 +1257,15 @@ public class TuitionManagerController {
                     if(StudentList[i].getSchool().equals("SOE"))
                     {
                         vbMenu.appendText(StudentList[i].toString() + "\n");
+                        firstNamePrint.appendText(StudentList[i].getProfile().getFname() + "\n");
+                        lastNamePrint.appendText(StudentList[i].getProfile().getLname()+ "\n");
+                        String c = (StudentList[i].getProfile().getDateOfBirth());
+                        dobPrint.appendText(c + "\n");
+                        schoolPrint.appendText(StudentList[i].getSchool()+ "\n");
+                        majorPrint.appendText(StudentList[i].getMajor().toString()+ "\n");
+                        creditsPrints.appendText(StudentList[i].returnCredits() + "\n");
+                        standingPrint.appendText(StudentList[i].getYear() + "\n");
+
                     }
                 }
                 if(StudentList[i] ==null)
@@ -1114,6 +1283,14 @@ public class TuitionManagerController {
      */
     protected void onPrintBySchoolSCI()
     {
+        firstNamePrint.setText("");
+        lastNamePrint.setText("");
+        dobPrint.setText("");
+        schoolPrint.setText("");
+        majorPrint.setText("");
+        creditsPrints.setText("");
+        standingPrint.setText("");
+
         vbMenu.appendText("testing Roster print by school SC&I " + "\n");
         Student[] StudentList = newRoster.getRoster();
 
@@ -1131,10 +1308,13 @@ public class TuitionManagerController {
                         vbMenu.appendText(StudentList[i].toString() + "\n");
                         firstNamePrint.appendText(StudentList[i].getProfile().getFname() + "\n");
                         lastNamePrint.appendText(StudentList[i].getProfile().getLname()+ "\n");
-                        String c = Integer.toString(StudentList[i].getProfile().getAge()); //change to get dob
-                        dobPrint.appendText(c);
+                        String c = (StudentList[i].getProfile().getDateOfBirth());
+                        dobPrint.appendText(c + "\n");
                         schoolPrint.appendText(StudentList[i].getSchool()+ "\n");
                         majorPrint.appendText(StudentList[i].getMajor().toString()+ "\n");
+                        creditsPrints.appendText(StudentList[i].returnCredits() + "\n");
+                        standingPrint.appendText(StudentList[i].getYear() + "\n");
+
                     }
                 }
                 if(StudentList[i] ==null)

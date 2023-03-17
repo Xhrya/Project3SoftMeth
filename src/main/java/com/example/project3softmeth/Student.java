@@ -39,6 +39,10 @@ public abstract class Student implements Comparable<Student>{
         this.creditCompleted = 0;
     }
 
+    public int addCredits(int credits)
+    {
+        return this.creditCompleted = this.creditCompleted + credits;
+    }
 
     /**
      * Returns the school of the student

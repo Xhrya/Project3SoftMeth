@@ -1336,7 +1336,54 @@ public class TuitionManagerController {
      */
     protected void onPrintEnrolled() //medha
     {
+
+        vbMenu.appendText("Prints enrolled List " + "\n");
+       // Student[] StudentList = newRoster.getRoster();
+        //Enrollment enrollmentList = new Enrollment();
+
+        EnrollStudent[] enrollStudentsList = enrollmentList.getEnrollStudents();
+
+        firstNamePrint.setText("");
+        lastNamePrint.setText("");
+        dobPrint.setText("");
+        schoolPrint.setText("");
+        majorPrint.setText("");
+        creditsPrints.setText("");
+        standingPrint.setText("");
+
+        if(enrollStudentsList ==null)
+        {
+            vbMenu.appendText("Enrollment list is empty" + "\n" );
+        }
+        else{
+            for(int i=0; i<enrollStudentsList.length; i++)
+            {
+                if(enrollStudentsList[i] != null)
+                {
+
+                        vbMenu.appendText(enrollStudentsList[i].toString() + "\n");
+                        firstNamePrint.appendText(enrollStudentsList[i].getProfile().getFname() + "\n");
+                        lastNamePrint.appendText(enrollStudentsList[i].getProfile().getLname()+ "\n");
+                        String c = (enrollStudentsList[i].getProfile().getDateOfBirth());
+                        dobPrint.appendText(c + "\n");
+                     //   schoolPrint.appendText(enrollStudentsList[i].getSchool()+ "\n");
+                    //   majorPrint.appendText(enrollStudentsList[i].getMajor().toString()+ "\n");
+                       creditsPrints.appendText(enrollStudentsList[i].getCreditsEnrolled() + "\n");
+                    //    standingPrint.appendText(enrollStudentsList[i].getYear() + "\n");
+                    //add a print statement for the
+
+
+                }
+                if(enrollStudentsList[i] ==null)
+                {
+                    break;
+                }
+            }
+
+        }
+
         vbMenu.setText("testing Enroll print"+ "\n");
+
 
         firstNamePrint.setText("");
         lastNamePrint.setText("");
@@ -1365,7 +1412,7 @@ public class TuitionManagerController {
 
         if(EnrollStudentList ==null)
         {
-            vbMenu.appendText("Roster is empty" + "\n" );
+            vbMenu.appendText("Enrollment is empty" + "\n" );
         }
         else{
             for(int i=0; i<EnrollStudentList.length; i++)
@@ -1394,6 +1441,16 @@ public class TuitionManagerController {
     protected void OnPrintTuitionDue() //medha
     {
         vbMenu.setText("Print Tuition Due"+ "\n");
+        firstNamePrint.setText("");
+        lastNamePrint.setText("");
+        dobPrint.setText("");
+        schoolPrint.setText("");
+        majorPrint.setText("");
+        creditsPrints.setText("");
+        standingPrint.setText("");
+
+
+        //need a new line for tuition?
 
 
     }
@@ -1402,9 +1459,65 @@ public class TuitionManagerController {
     /**
      * Prints the students by semester
      */
-    protected void onPrintSemesterEnd() //medha
+    protected void onPrintSemesterEnd() //done
     {
-        vbMenu.setText("testing Roster print"+ "\n");
+        vbMenu.setText("Semester end print"+ "\n");
+        EnrollStudent[] EnrollStudentList = enrollmentList.getEnrollStudents();
+        Student[] StudentList = newRoster.getRoster();
+
+
+        if (enrollmentList.getSize() == 0) {
+            vbMenu.appendText("Student enrollment list is empty");
+        } else {
+
+            for(int i =0; i< enrollmentList.getSize(); i++)
+            {
+
+                EnrollStudent temp = EnrollStudentList[i];
+
+                for(int j= 0; j< StudentList.length; j++)
+                {
+                    if(StudentList[i].getProfile().equals(temp.getProfile()))
+                    {
+
+                        StudentList[i].addCredits(temp.getCreditsEnrolled());
+                    }
+                }
+            }
+        }
+
+
+        if(StudentList ==null)
+        {
+            vbMenu.appendText("Roster is empty" + "\n" );
+        }
+        else{
+            for(int i=0; i<StudentList.length; i++)
+            {
+                if(StudentList[i] != null)
+                {
+
+                    if(StudentList[i].returnCredits() >=120)
+                    {
+                        vbMenu.appendText(StudentList[i].toString() + "\n");
+                        firstNamePrint.appendText(StudentList[i].getProfile().getFname() + "\n");
+                        lastNamePrint.appendText(StudentList[i].getProfile().getLname()+ "\n");
+                        String c = (StudentList[i].getProfile().getDateOfBirth());
+                        dobPrint.appendText(c + "\n");
+                        schoolPrint.appendText(StudentList[i].getSchool()+ "\n");
+                        majorPrint.appendText(StudentList[i].getMajor().toString()+ "\n");
+                        creditsPrints.appendText(StudentList[i].returnCredits() + "\n");
+                        standingPrint.appendText(StudentList[i].getYear() + "\n");
+
+                    }
+                }
+                if(StudentList[i] ==null)
+                {
+                    break;
+                }
+            }
+
+        }
     }
 
     }

@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="25c80360-d87a-49ab-86f1-bcaad0488000" name="Changes" comment="Figured out how to load a file and completed onFileLoad method">
+    <list default="true" id="25c80360-d87a-49ab-86f1-bcaad0488000" name="Changes" comment="prints by all three options for roster and schools.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project3softmeth/Profile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project3softmeth/Profile.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project3softmeth/TuitionManagerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project3softmeth/TuitionManagerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/project3softmeth/tuition_manager_view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/project3softmeth/tuition_manager_view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -225,7 +223,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678998867936</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="prints by all three options for roster and schools.">
+      <created>1679022348554</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1679022348554</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -258,7 +263,8 @@
     <MESSAGE value="Adding comments to TuitionManagerController" />
     <MESSAGE value="Fixing errors so program does not crash" />
     <MESSAGE value="Figured out how to load a file and completed onFileLoad method" />
-    <option name="LAST_COMMIT_MESSAGE" value="Figured out how to load a file and completed onFileLoad method" />
+    <MESSAGE value="prints by all three options for roster and schools." />
+    <option name="LAST_COMMIT_MESSAGE" value="prints by all three options for roster and schools." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

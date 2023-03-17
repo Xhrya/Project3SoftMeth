@@ -1332,11 +1332,50 @@ public class TuitionManagerController {
      */
     protected void onPrintEnrolled() //medha
     {
-        vbMenu.setText("testing Roster print"+ "\n");
-//        for(int i =0; i<enrollmentList.size; i++)
-//        {
-//            vbMenu.setText(enrollmentList[i].toString());
-//        }
+        vbMenu.appendText("Prints enrolled List " + "\n");
+       // Student[] StudentList = newRoster.getRoster();
+        //Enrollment enrollmentList = new Enrollment();
+
+        EnrollStudent[] enrollStudentsList = enrollmentList.getEnrollStudents();
+
+        firstNamePrint.setText("");
+        lastNamePrint.setText("");
+        dobPrint.setText("");
+        schoolPrint.setText("");
+        majorPrint.setText("");
+        creditsPrints.setText("");
+        standingPrint.setText("");
+
+        if(enrollStudentsList ==null)
+        {
+            vbMenu.appendText("Enrollment list is empty" + "\n" );
+        }
+        else{
+            for(int i=0; i<enrollStudentsList.length; i++)
+            {
+                if(enrollStudentsList[i] != null)
+                {
+
+                        vbMenu.appendText(enrollStudentsList[i].toString() + "\n");
+                        firstNamePrint.appendText(enrollStudentsList[i].getProfile().getFname() + "\n");
+                        lastNamePrint.appendText(enrollStudentsList[i].getProfile().getLname()+ "\n");
+                        String c = (enrollStudentsList[i].getProfile().getDateOfBirth());
+                        dobPrint.appendText(c + "\n");
+                     //   schoolPrint.appendText(enrollStudentsList[i].getSchool()+ "\n");
+                    //   majorPrint.appendText(enrollStudentsList[i].getMajor().toString()+ "\n");
+                       creditsPrints.appendText(enrollStudentsList[i].getCreditsEnrolled() + "\n");
+                    //    standingPrint.appendText(enrollStudentsList[i].getYear() + "\n");
+                    //add a print statement for the
+
+
+                }
+                if(enrollStudentsList[i] ==null)
+                {
+                    break;
+                }
+            }
+
+        }
 
     }
 
@@ -1347,6 +1386,15 @@ public class TuitionManagerController {
     protected void OnPrintTuitionDue() //medha
     {
         vbMenu.setText("Print Tuition Due"+ "\n");
+        firstNamePrint.setText("");
+        lastNamePrint.setText("");
+        dobPrint.setText("");
+        schoolPrint.setText("");
+        majorPrint.setText("");
+        creditsPrints.setText("");
+        standingPrint.setText("");
+
+        //need a new line for tuition?
 
 
     }

@@ -420,6 +420,10 @@ public class TuitionManagerController {
      * @param e is the event where the user clicks "Change Major"
      */
     protected void onChangeMajorClick(Event e) {
+        if(majorButtons.getSelectedToggle() == null){
+            vbMenu.appendText("Please specify your major." + "\n"+ "\n");
+            return;
+        }
         String major = majorButtons.getSelectedToggle().toString();
         major = major.substring(major.indexOf("'") +1, major.length() -1);
 
@@ -1332,12 +1336,55 @@ public class TuitionManagerController {
      */
     protected void onPrintEnrolled() //medha
     {
-        vbMenu.setText("testing Roster print"+ "\n");
-//        for(int i =0; i<enrollmentList.size; i++)
-//        {
-//            vbMenu.setText(enrollmentList[i].toString());
-//        }
+        vbMenu.setText("testing Enroll print"+ "\n");
 
+        firstNamePrint.setText("");
+        lastNamePrint.setText("");
+        dobPrint.setText("");
+        schoolPrint.setText("");
+        majorPrint.setText("");
+        creditsPrints.setText("");
+        standingPrint.setText("");
+
+        vbMenu.appendText("testing Enroll print" + "\n");
+        EnrollStudent[] EnrollStudentList = enrollmentList.getEnrollStudents();
+
+        int size = enrollmentList.getSize();
+
+        for (int i = 0; i < size; i++) {
+            int min = i;
+            for (int j = 1 + i; j < size; j++) {
+                if ((EnrollStudentList[j].compareTo(EnrollStudentList[min])) == -1) {
+                    min = j;
+                }
+            }
+            EnrollStudent temp = EnrollStudentList[min];
+            EnrollStudentList[min] = EnrollStudentList[i];
+            EnrollStudentList[i] = temp;
+        }
+
+        if(EnrollStudentList ==null)
+        {
+            vbMenu.appendText("Roster is empty" + "\n" );
+        }
+        else{
+            for(int i=0; i<EnrollStudentList.length; i++)
+            {
+                if(EnrollStudentList[i] != null)
+                {
+                    vbMenu.appendText(EnrollStudentList[i].toString() + "\n");
+                    firstNamePrint.appendText(EnrollStudentList[i].getProfile().getFname() + "\n");
+                    lastNamePrint.appendText(EnrollStudentList[i].getProfile().getLname()+ "\n");
+                    String c = (EnrollStudentList[i].getProfile().getDateOfBirth());
+                    dobPrint.appendText(c + "\n");
+                    creditsPrints.appendText(EnrollStudentList[i].getCreditsEnrolled() + "\n");
+                }
+                if(EnrollStudentList[i] ==null)
+                {
+                    break;
+                }
+            }
+        }
     }
 
     @FXML

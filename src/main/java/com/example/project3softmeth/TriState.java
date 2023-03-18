@@ -58,14 +58,13 @@ public class TriState extends NonResident{
     @Override
     public double tuitionDue(int creditsEnrolled) {
 
-        String status = studentStatus(creditsEnrolled);
         double tuition = 0;
-        if(status.equals("parttime"))
+        if(creditsEnrolled>=3 && creditsEnrolled<=12)
         {
             tuition= creditsEnrolled*966;
             tuition = (3268 * 0.80) + tuition;
         }
-        if(status.equals("fulltime"))
+        else if(creditsEnrolled>12 && creditsEnrolled <=24)
         {
             tuition= 29737;
             tuition = tuition + 3268;
@@ -83,23 +82,6 @@ public class TriState extends NonResident{
         return false;
     }
 
-    /**
-     * Returns whether a student is a part time or full time student
-     * @param creditsEnrolled is the current student's number of credits
-     * */
-    public String studentStatus(int creditsEnrolled)
-    {
-        String status = "";
-        if(creditsEnrolled>=3 && creditsEnrolled<=12)
-        {
-            status = "partime";
-        }
-        else if(creditsEnrolled>12 && creditsEnrolled <=24)
-        {
-            status = "fulltime";
-        }
-        return status;
-    }
 
 
 }

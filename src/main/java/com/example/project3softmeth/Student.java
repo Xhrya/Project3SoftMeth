@@ -38,7 +38,10 @@ public abstract class Student implements Comparable<Student>{
         this.major = null;
         this.creditCompleted = 0;
     }
-
+    /**
+     * Update the number of credits of the student
+     * @param credits, the number of credits that we need to add
+     * */
     public int addCredits(int credits)
     {
         return this.creditCompleted = this.creditCompleted + credits;
@@ -142,8 +145,6 @@ public abstract class Student implements Comparable<Student>{
         }
         return false;
 
-
-
     }
 
     /** Compares student to another student
@@ -193,16 +194,5 @@ public abstract class Student implements Comparable<Student>{
     public abstract boolean isResident();
 
 
-    public static void main()
-    {
-//       Student test1 = new Student(new Profile("Pandey", "Shreya", new Date(2003, 8, 18)), Major.EE, 100);
-//        test1.getSchool();
-//        test1.getMajor();
-//        test1.setMajor(Major.CS);
-//        test1.getProfile();
-//        test1.toString();
-//        test1.equals(test1);
-        //  Student test2 = new Student(new Profile("Veldurthi", "Medhasri", new Date(2003, 8, 5)), Major.CS, 99);
-        //   test1.compareTo(test2);
-    }
+
 }

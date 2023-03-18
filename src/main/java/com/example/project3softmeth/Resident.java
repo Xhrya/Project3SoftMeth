@@ -28,39 +28,23 @@ public class Resident extends Student{
     @Override
     public double tuitionDue(int creditsEnrolled) {
         double tuition = 0;
-        if(studentStatus().equals("parttime"))
+
+        if(creditsEnrolled>=3 && creditsEnrolled <=12)
         {
-            tuition= returnCredits() *404;
+            tuition= creditsEnrolled *404;
             tuition = (3268 * 0.80) + tuition;
         }
-        if(studentStatus().equals("fulltime"))
+        if(creditsEnrolled>12 && creditsEnrolled <=24)
         {
             tuition= 12536;
             tuition = tuition + 3268;
 
-        }
+        } //6654
 
         return tuition;
 
     }
 
-    /**
-     * If a student has 3-12 credits, returns part-time student.
-     * If a student has 12-24 credits they are a full time student.
-     * */
-    public String studentStatus()
-    {
-        String status = "";
-        if(this.returnCredits()>=3 && this.returnCredits() <=12)
-        {
-            status = "partime";
-        }
-        else if(this.returnCredits()>12 && this.returnCredits() <=24)
-        {
-            status = "fulltime";
-        }
-        return status;
-    }
 
     /**
      * Returns true if the student is a resident

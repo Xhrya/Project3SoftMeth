@@ -74,12 +74,12 @@ public class TuitionManagerController {
     FileChooser uploadFile;
 
 
-    //everything for Enroll/Drop
-    @FXML
+
     /**
      * Adds a student to the roster by checking first if they are resident, nonresident, tristate or international
      * @param e is the event where the user clicks "add"
      */
+    @FXML
     protected void onAddButtonClick(Event e) {
        //converting the toggle buttons of resident and major into strings
         if(residentButtons.getSelectedToggle() == null){
@@ -96,19 +96,6 @@ public class TuitionManagerController {
         String major = majorButtons.getSelectedToggle().toString();
         major = major.substring(major.indexOf("'") +1, major.length() -1);
 
-
-        //delete this later!
-        //vbMenu.appendText(residentButtons.getSelectedToggle().toString());
-//        vbMenu.appendText("STATUS:"+residency + "\n");
-//        //vbMenu.appendText("Major: " + majorButtons.getSelectedToggle().toString());
-//        vbMenu.appendText("MAJOR:" + major+ "\n");
-//        vbMenu.appendText("FirstName:" + firstNameRoster.getText()+ "\n");
-//        vbMenu.appendText("Lastname :" + lastNameRoster.getText()+ "\n");
-//        vbMenu.appendText("Credits completed:"+ creditsCompletedRoster.getText() + "\n");
-//        vbMenu.appendText("Birthdate :" + birthDate.getValue() + "\n");
-//        String dob = birthDate.getValue().toString().substring(5 , 7) + "/" + birthDate.getValue().toString().substring(8 , 10) + "/" + birthDate.getValue().toString().substring(0 , 4);
-//        vbMenu.appendText(dob);
-        //delete this later^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
         if(residency.equals("Resident")) {
@@ -354,11 +341,12 @@ public class TuitionManagerController {
     }
 
 
-    @FXML
+
     /**
      * Drops a student to the roster
      * @param e is the event where the user clicks "Drop"
      */
+    @FXML
     protected void onDropButtonClick(Event e) {
         String firstName = firstNameRoster.getText();
         if(firstName.length()<1){
@@ -402,11 +390,12 @@ public class TuitionManagerController {
         }
     }
 
-    @FXML
+
     /**
      * Changes a student's major on the roster
      * @param e is the event where the user clicks "Change Major"
      */
+    @FXML
     protected void onChangeMajorClick(Event e) {
         if(majorButtons.getSelectedToggle() == null){
             vbMenu.appendText("Please specify your major." + "\n"+ "\n");
@@ -446,11 +435,12 @@ public class TuitionManagerController {
         }
     }
 
-    @FXML
+
     /**
      * Adds, students given a file
      * @param e is the event where the user clicks "Change Major"
      */
+    @FXML
     protected void onLoadFromFile(Event e) throws FileNotFoundException {//attach to scene builder
         uploadFile = new FileChooser();
         File f = uploadFile.showOpenDialog(null);
@@ -494,6 +484,12 @@ public class TuitionManagerController {
         }
     }
 
+
+    /**
+     * Adds, resident from File
+     * @param line the line of code from file that is being added
+     */
+    @FXML
     private void fileAddResident(String line)
     {
         StringTokenizer st = new StringTokenizer(line, ",");
@@ -563,6 +559,11 @@ public class TuitionManagerController {
         }
     }
 
+    /**
+     * Adds, nonresident from File
+     * @param line the line of code from file that is being added
+     */
+    @FXML
     private void fileAddNonResident(String line)
     {
         StringTokenizer st = new StringTokenizer(line, ",");
@@ -626,6 +627,11 @@ public class TuitionManagerController {
 
     }
 
+    /**
+     * Adds, tristate student from File
+     * @param line the line of code from file that is being added
+     */
+    @FXML
     private void fileAddTristate(String line)
     {
         StringTokenizer st = new StringTokenizer(line, ",");
@@ -652,7 +658,7 @@ public class TuitionManagerController {
             vbMenu.appendText("Missing state code." + "\n"+ "\n");
             return;
         }
-
+        //create a button group fix
 
         if(! (state.equals("CT") || state.equals("NY")))
         {
@@ -707,6 +713,11 @@ public class TuitionManagerController {
         }
     }
 
+    /**
+     * Adds, international from File
+     * @param line the line of code from file that is being added
+     */
+    @FXML
     private void fileAddInternational(String line)
     {
         StringTokenizer st = new StringTokenizer(line, ",");
@@ -773,11 +784,12 @@ public class TuitionManagerController {
 
 
 
-    @FXML
+
     /**
      * Enrolls a student
      * @param e is the event where the user clicks "Drop"
      */
+    @FXML
     protected void onEnrollClick(Event e)
     {
         String firstName = firstNameEnroll.getText();
@@ -826,11 +838,12 @@ public class TuitionManagerController {
     }
 
 
-    @FXML
+
     /**
      * Removes a student from enrollment
      * @param e is the event where the user clicks "Drop"
      */
+    @FXML
     protected void onDropClick(Event e)
     {
         String firstName = firstNameEnroll.getText();
@@ -878,11 +891,12 @@ public class TuitionManagerController {
         }
 
     }
-    @FXML
+
     /**
      * Updates a student's scholarship amount
      * @param e is the event where the user clicks "Update Scholarship"
      */
+    @FXML
     protected void onUpdateScholarshipAmountClick(Event e)
     {
         String firstName = firstNameEnroll.getText();
@@ -924,10 +938,11 @@ public class TuitionManagerController {
             vbMenu.appendText("Resident not found"+ "\n");
         }
     }
-    @FXML
+
     /**
      * Prints the students on roster
      */
+    @FXML
     protected void onPrintByProfileRoster() //shreya
     {
         firstNamePrint.setText("");
@@ -985,10 +1000,11 @@ public class TuitionManagerController {
         }
 
     }
-    @FXML
+
     /**
      * Prints the students by roster by their school
      */
+    @FXML
     protected void onPrintBySchoolRoster() //shreya
     {
         firstNamePrint.setText("");
@@ -1047,10 +1063,11 @@ public class TuitionManagerController {
 
     }
 
-    @FXML
+
     /**
      * Prints the students by their standing(credits)
      */
+    @FXML
     protected void onPrintByStandingRoster()
     {
         firstNamePrint.setText("");
@@ -1121,10 +1138,11 @@ public class TuitionManagerController {
 
     }
 
-    @FXML
+
     /**
      * Prints the students in RBS
      */
+    @FXML
     protected void onPrintBySchoolRBS()
     {
         firstNamePrint.setText("");
@@ -1170,10 +1188,11 @@ public class TuitionManagerController {
         }
     }
 
-    @FXML
+
     /**
      * Prints the students in SAS
      */
+    @FXML
     protected void onPrintBySchoolSAS()
     {
         vbMenu.appendText("testing Roster print by school SAS " + "\n");
@@ -1219,10 +1238,11 @@ public class TuitionManagerController {
         }
     }
 
-    @FXML
+
     /**
      * Prints the students in SOE
      */
+    @FXML
     protected void onPrintBySchoolSOE() //shreya
     {
         firstNamePrint.setText("");
@@ -1268,10 +1288,11 @@ public class TuitionManagerController {
         }
     }
 
-    @FXML
+
     /**
      * Prints the students in SCI
      */
+    @FXML
     protected void onPrintBySchoolSCI()
     {
         firstNamePrint.setText("");
@@ -1317,10 +1338,11 @@ public class TuitionManagerController {
         }
     }
 
-    @FXML
+
     /**
      * Prints the students who are Enrolled
      */
+    @FXML
     protected void onPrintEnrolled()
     {
 
@@ -1421,10 +1443,11 @@ public class TuitionManagerController {
         }
     }
 
-    @FXML
+
     /**
      * Prints the students by tuition due
      */
+    @FXML
     protected void OnPrintTuitionDue() {
         vbMenu.setText("Print Tuition Due" + "\n");
         firstNamePrint.setText("");
@@ -1438,6 +1461,7 @@ public class TuitionManagerController {
 
         EnrollStudent[] enrollStudentsList = enrollmentList.getEnrollStudents();
         Student[] studentsEnrolled = newRoster.getRoster();
+
         if (enrollStudentsList == null) {
             vbMenu.appendText("Enrollment list is empty" + "\n");
         } else {
@@ -1463,12 +1487,24 @@ public class TuitionManagerController {
         }
     }
 
-    @FXML
+
+
     /**
      * Prints the students by semester
      */
+    @FXML
     protected void onPrintSemesterEnd(){
-        vbMenu.setText("Semester end print"+ "\n");
+        vbMenu.setText("Semester End print"+ "\n");
+        firstNamePrint.setText("");
+        lastNamePrint.setText("");
+        dobPrint.setText("");
+        schoolPrint.setText("");
+        majorPrint.setText("");
+        creditsPrints.setText("");
+        standingPrint.setText("");
+        tuitionDuePrint.setText("");
+
+
         EnrollStudent[] EnrollStudentList = enrollmentList.getEnrollStudents();
         Student[] StudentList = newRoster.getRoster();
 

@@ -17,6 +17,10 @@ public class EnrollStudent {
         this.creditsEnrolled = 0;
     }
 
+    /**
+     * Gets the Profile of the Student
+     * @return Profile the Profile of the EnrollStudent
+     */
     public Profile getProfile()
     {
         return this.profile;

@@ -8,6 +8,11 @@ public class Roster {
     private Student[] roster;
     private int size;
 
+    /**
+     * Default Constructor Making a roster of students
+     *
+
+     */
     public Roster() {
         this.roster = roster;
         this.size = size;
@@ -25,6 +30,10 @@ public class Roster {
     }
 
 
+    /**
+     * Gets an array of Student[] from roster
+     * @return Student[] the array of Students in Roster
+     */
     public Student[] getRoster() {
         return roster;
     }
@@ -270,6 +279,11 @@ public class Roster {
         return false;
     }
 
+    /**
+     * Returns the Resident with matching profile in Roster
+     * @param p the profile of the student
+     * @return Resident the Resident with matching profiles in Roster
+     */
     public Resident findResident(Profile p){
         int NOT_FOUND = -1;
         for (int i = 0; i < size; i++) {

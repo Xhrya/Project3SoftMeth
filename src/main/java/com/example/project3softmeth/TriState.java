@@ -2,6 +2,7 @@
  * @author Shreya Pandey
  * @author Medhasri Veldurthi
  */
+
 package com.example.project3softmeth;
 
 public class TriState extends NonResident{

@@ -47,7 +47,6 @@ public class Enrollment {
 
     /**
      * Add a new student to the enrollStudent list
-     *
      * @param enrollStudent
      */
     public void add(EnrollStudent enrollStudent) {
